@@ -9,8 +9,11 @@ namespace MeetingLibrary
         public string Description { get; set; }
         public List<MeetingRoomModel> MeetingRooms { get; set; }
 
-        public MeetingCentreModel()
+        public MeetingCentreModel(string name, string code, string description)
         {
+            Name = name;
+            Code = code;
+            Description = description;
             MeetingRooms = new List<MeetingRoomModel>();
         }
     }
