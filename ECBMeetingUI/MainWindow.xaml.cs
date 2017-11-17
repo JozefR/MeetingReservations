@@ -24,5 +24,31 @@ namespace ECBMeetingUI
         {
             InitializeComponent();
         }
+
+        //Show meeting centres from csv file. 
+
+
+
+
+        private void newMeetingButton_Click(object sender, RoutedEventArgs e)
+        {
+            ECBForm eCBForm = new ECBForm("my first test");
+            eCBForm.Show();
+        }
+
+        private void editMeegingButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void newRoomsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editRoomsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

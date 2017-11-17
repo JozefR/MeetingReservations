@@ -23,5 +23,11 @@ namespace ECBMeetingUI
         {
             InitializeComponent();
         }
+
+        public ECBForm(string test)
+        {
+            InitializeComponent();
+            formLabel.Text = test;
+        }
     }
 }

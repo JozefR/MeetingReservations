@@ -17,16 +17,22 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2"/>
+        <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2">
+            <MenuItem Header="File" Height="17" Width="146">
+                <MenuItem Header="Import Data" HorizontalAlignment="Left" Height="20" Width="152" Margin="0,0,-12,0"/>
+                <MenuItem Header="Save" HorizontalAlignment="Left" Height="20" Width="140"/>
+                <MenuItem Header="Exit" HorizontalAlignment="Left" Height="20" Width="140"/>
+            </MenuItem>
+        </Menu>
         <Label Content="Meeting Centres" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25"/>
         <Label Content="Meeting Rooms" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25" Grid.Column="1"/>
         <ListBox x:Name="meetingCentresListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238"/>
         <ListBox x:Name="meetingRoomsListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <Button x:Name="newMeetingButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20"/>
-        <Button x:Name="editMeegingButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="newMeetingButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Click="newMeetingButton_Click"/>
+        <Button x:Name="editMeegingButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Click="editMeegingButton_Click"/>
         <Button x:Name="deleteMeetingButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49"/>
-        <Button x:Name="newRoomsButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Grid.Column="1"/>
-        <Button x:Name="editRoomsButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
+        <Button x:Name="newRoomsButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Grid.Column="1" Click="newRoomsButton_Click"/>
+        <Button x:Name="editRoomsButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="editRoomsButton_Click"/>
         <Button x:Name="deleteRoomsButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
         <Label Content="Meeting Centre Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="25"/>
         <Label Content="Meeting Room Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="30" Grid.Column="1"/>
@@ -45,5 +51,6 @@
         <Label Content="Capacity" FontSize="9" HorizontalAlignment="Left" Margin="10,147,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
         <TextBox x:Name="capacityRoomsTextBox" HorizontalAlignment="Left" Height="14" Margin="10,171,0,0" Grid.Row="1" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
         <CheckBox x:Name="videotConforenceChceckBox" Content="Video conference" FontSize="9" Grid.Column="1" HorizontalAlignment="Left" Margin="10,190,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
+
     </Grid>
 </Window>
