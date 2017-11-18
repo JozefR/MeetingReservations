@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ECBMeetingUI.Properties
+namespace ECBMeetingReservations.Properties
 {
 
 

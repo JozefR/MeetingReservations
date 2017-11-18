@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E519C3FD-7F82-4CE8-AF67-71118E60B3EC}</ProjectGuid>
+    <ProjectGuid>{3D934677-97CE-4591-97BA-3CF4AE9239C3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ECBMeetingUI</RootNamespace>
-    <AssemblyName>ECBMeetingUI</AssemblyName>
+    <RootNamespace>ECBMeetingReservations</RootNamespace>
+    <AssemblyName>ECBMeetingReservations</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,6 +50,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
     <Page Include="ECBCentreForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ECBCentreForm.xaml.cs">
       <DependentUpon>ECBCentreForm.xaml</DependentUpon>
     </Compile>

@@ -1,22 +1,19 @@
-﻿<Window x:Class="ECBMeetingUI.ECBRoomForm"
+﻿<Window x:Class="ECBMeetingReservations.ECBCentreForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ECBMeetingUI"
+        xmlns:local="clr-namespace:ECBMeetingReservations"
         mc:Ignorable="d"
-        Title="ECBRoomForm" Height="380" Width="329">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Meeting Room Form"/><LineBreak/><Run/></TextBlock>
+        Title="ECBCentreForm" Height="300" Width="300">
+    <Grid Margin="0,0,0,-4">
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Meeting Centre Form"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,129,0,0" TextWrapping="Wrap" Text="Code" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Description"/><LineBreak/><Run/></TextBlock>
         <TextBox x:Name="nameFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="codeFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="descriptionFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="roomFormLabel" Content="" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Capacity"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="capacityFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="videoConferenceCheckBox" Content="Video Conference" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="120" Height="24"/>
+        <TextBlock x:Name="formLabel" HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
     </Grid>
 </Window>

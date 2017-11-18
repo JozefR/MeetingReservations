@@ -1,13 +1,14 @@
-﻿using System.Windows;
+﻿using MeetingLibrary;
 using System.Collections.Generic;
-using MeetingLibrary;
-using System.IO;
-using System;
-using System.Linq;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Windows;
 
-namespace ECBMeetingUI
+namespace ECBMeetingReservations
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -119,7 +120,7 @@ namespace ECBMeetingUI
 
         // 2. Make Menu nav with Import data, save, exit buttons
 
-            //2.1 Import data button
+        //2.1 Import data button
 
         private void importDataBtn_Click(object sender, RoutedEventArgs e)
         {

@@ -12,22 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ECBMeetingUI
+namespace ECBMeetingReservations
 {
     /// <summary>
-    /// Interaction logic for ECBForm.xaml
+    /// Interaction logic for ECBRoomForm.xaml
     /// </summary>
-    public partial class ECBForm : Window
+    public partial class ECBRoomForm : Window
     {
-        public ECBForm()
+        public ECBRoomForm()
         {
             InitializeComponent();
-        }
-
-        public ECBForm(string test)
-        {
-            InitializeComponent();
-            formLabel.Text = test;
         }
     }
 }
