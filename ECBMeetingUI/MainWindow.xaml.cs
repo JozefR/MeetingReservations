@@ -22,6 +22,8 @@ namespace ECBMeetingUI
 
         }
 
+        // 1. Handle csv file and parse it to entities. 
+
         private void LoadMeetingDataLinq()
         {
             var lines = File.ReadLines
@@ -92,6 +94,19 @@ namespace ECBMeetingUI
         }
 
 
+        // 2. Make Menu nav with Import data, save, exit buttons
+
+            //2.1 Import data button
+
+
+
+
+
+        private void importDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ImportDataUI importDataUI = new ImportDataUI();
+            importDataUI.Show();
+        }
 
         private void newMeetingButton_Click(object sender, RoutedEventArgs e)
         {
