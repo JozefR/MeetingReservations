@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ECBMeetingUI"
         mc:Ignorable="d"
-        Title="ImportDataUI" Height="225.754" Width="246.882">
+        Title="ImportDataUI" Height="158.148" Width="259.558">
     <Grid Margin="0,0,2,0">
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="217"/>
-        <Button Content="Open" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="58" Height="23"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="169,38,0,0" VerticalAlignment="Top" Width="58" Height="23"/>
+        <TextBox x:Name="inputFileTextBox" HorizontalAlignment="Left" Height="55" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217"/>
+        <Button x:Name="openFileBtn" Content="Open" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="58" Height="23" Click="openFileBtn_Click"/>
+        <Button x:Name="saveFileBtn" Content="Import" HorizontalAlignment="Left" Margin="169,70,0,0" VerticalAlignment="Top" Width="58" Height="23" Click="saveFileBtn_Click"/>
 
     </Grid>
 </Window>

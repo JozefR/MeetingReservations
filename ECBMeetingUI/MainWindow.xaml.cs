@@ -4,6 +4,7 @@ using MeetingLibrary;
 using System.IO;
 using System;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace ECBMeetingUI
 {
@@ -12,37 +13,49 @@ namespace ECBMeetingUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<MeetingCentreModel> _centres = new List<MeetingCentreModel>();
-        private List<MeetingRoomModel> _rooms = new List<MeetingRoomModel>();
+        private static readonly ObservableCollection<MeetingCentreModel> _centres = new ObservableCollection<MeetingCentreModel>();
+        private static readonly List<MeetingRoomModel> _rooms = new List<MeetingRoomModel>();
 
         public MainWindow()
         {
             InitializeComponent();
-            LoadMeetingDataLinq();
-
+            showEntitiesInListBox();
         }
 
         // 1. Handle csv file and parse it to entities. 
 
-        private void LoadMeetingDataLinq()
+        public void LoadMeetingDataLinq(string path)
         {
-            var lines = File.ReadLines
-                (@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservations\MeetingLibrary\ImportData.csv");
+            IEnumerable<string> lines = null;
 
+            if (path != null)
+            {
+                lines = File.ReadLines($@"{path}");
+                parseData(lines);
+            }
+
+            else
+            {
+                MessageBox.Show("I don't have any file to show data. Sorry :(");
+            }
+        }
+
+        private void parseData(IEnumerable<string> lines)
+        {
             bool centres = false;
             bool rooms = false;
 
             foreach (var line in lines)
             {
                 var splitLine = line.Split(',');
-               
+
                 if (splitLine[0] == "MEETING_CENTRES")
                 {
                     centres = true;
                     continue;
                 }
 
-                if(splitLine[0] == "MEETING_ROOMS")
+                if (splitLine[0] == "MEETING_ROOMS")
                 {
                     rooms = true;
                     centres = false;
@@ -93,29 +106,34 @@ namespace ECBMeetingUI
             _centres.Add(new MeetingCentreModel(name, code, description));
         }
 
-
         // 2. Make Menu nav with Import data, save, exit buttons
 
             //2.1 Import data button
-
-
-
-
 
         private void importDataBtn_Click(object sender, RoutedEventArgs e)
         {
             ImportDataUI importDataUI = new ImportDataUI();
             importDataUI.Show();
+
         }
+
+        // 3. Show Centre and Rooms entities in listBox. 
+
+        private void showEntitiesInListBox()
+        {
+            meetingCentresListBox.ItemsSource = _centres;
+        }
+
+
+        private void listMeetingCentre_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("test");
+        }
+
 
         private void newMeetingButton_Click(object sender, RoutedEventArgs e)
         {
-            ECBForm eCBForm = new ECBForm("my first test");
-            //eCBForm.Show();
-            foreach (var item in _rooms)
-            {
-                MessageBox.Show(item.MeetingCentre.Code);
-            }
+
         }
 
         private void editMeegingButton_Click(object sender, RoutedEventArgs e)

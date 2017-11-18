@@ -16,5 +16,13 @@ namespace MeetingLibrary
             Description = description;
             MeetingRooms = new List<MeetingRoomModel>();
         }
+
+        public string getFullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", Name, Code);
+            }
+        }
     }
 }
