@@ -26,18 +26,29 @@ namespace ECBMeetingUI
 
         public void LoadMeetingDataLinq(string path)
         {
-            IEnumerable<string> lines = null;
+            var lines = new List<string>();
 
             if (path != null)
             {
-                lines = File.ReadLines($@"{path}");
-                parseData(lines);
+                using (StreamReader reader = new StreamReader($"{path}"))
+                {
+                    var line = reader.ReadLine();
+
+                    while (line != null)
+                    {
+                        lines.Add(line);
+                        line = reader.ReadLine();
+                    }
+                }
             }
 
             else
             {
                 MessageBox.Show("I don't have any file to show data. Sorry :(");
             }
+
+            //lines = File.ReadLines($@"{path}");
+            parseData(lines);
         }
 
         private void parseData(IEnumerable<string> lines)

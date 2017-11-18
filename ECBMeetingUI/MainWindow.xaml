@@ -26,12 +26,12 @@
         </Menu>
         <Label Content="Meeting Centres" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25"/>
         <Label Content="Meeting Rooms" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25" Grid.Column="1"/>
-        <ListBox x:Name="meetingCentresListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238">
+        <ListBox x:Name="meetingCentresListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
-                        <Grid.ColumnDefinitions  >
-                            <ColumnDefinition Width= "*"  />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width= "*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding getFullName}" />
                     </Grid>
@@ -47,12 +47,12 @@
         <Button x:Name="deleteRoomsButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
         <Label Content="Meeting Centre Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="25"/>
         <Label Content="Meeting Room Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="30" Grid.Column="1"/>
-        <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
-        <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,109,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24"/>
-        <TextBox x:Name="nameCentresTextBox" HorizontalAlignment="Left" Height="14" Margin="10,57,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
-        <TextBox x:Name="codeCentresTextBox" HorizontalAlignment="Left" Height="14" Margin="10,93,0,0" Grid.Row="1" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="238"/>
-        <TextBox x:Name="descriptionCentresTextBox" HorizontalAlignment="Left" Height="14" Margin="10,133,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,40,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,87,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
+        <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,138,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24"/>
+        <TextBox x:Name="nameCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="25" Margin="10,62,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="238"></TextBox>
+        <TextBox x:Name="codeCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Code, Mode=OneWay}" HorizontalAlignment="Left" Height="29" Margin="10,109,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="236"></TextBox>
+        <TextBox x:Name="descriptionCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Description, Mode=OneWay}" HorizontalAlignment="Left" Height="79" Margin="10,162,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
         <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Grid.Column="1"/>
         <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,109,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
@@ -62,6 +62,7 @@
         <Label Content="Capacity" FontSize="9" HorizontalAlignment="Left" Margin="10,147,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
         <TextBox x:Name="capacityRoomsTextBox" HorizontalAlignment="Left" Height="14" Margin="10,171,0,0" Grid.Row="1" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
         <CheckBox x:Name="videotConforenceChceckBox" Content="Video conference" FontSize="9" Grid.Column="1" HorizontalAlignment="Left" Margin="10,190,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
+
 
     </Grid>
 </Window>
