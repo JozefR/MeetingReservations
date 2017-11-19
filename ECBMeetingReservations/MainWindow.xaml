@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ECBMeetingReservations"
         mc:Ignorable="d"
-        Title="MainWindow" Height="542.465" Width="553.549">
+        Title="MainWindow" Height="621.465" Width="546.549">
     <Grid Margin="0,-1,0,1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -73,10 +73,9 @@
         <TextBox x:Name="nameRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="24" Margin="10,47,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
         <TextBox x:Name="codeRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Code, Mode=OneWay}" HorizontalAlignment="Left" Height="21" Margin="10,93,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
         <TextBox x:Name="descriptionRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Description, Mode=OneWay}" HorizontalAlignment="Left" Height="21" Margin="10,148,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <Label Content="Capacity" FontSize="9" HorizontalAlignment="Left" Margin="10,169,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
+        <Label Content="Capacity" FontSize="9" HorizontalAlignment="Left" Margin="11,174,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
         <TextBox x:Name="capacityRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Capacity, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="10,198,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <CheckBox x:Name="videotConforenceChceckBox" Checked="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Video, Mode=OneWay}" Content="Video conference" FontSize="9" Grid.Column="1" HorizontalAlignment="Left" Margin="10,223,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
-
-
+        <Label Content="Video Conference;" FontSize="9" HorizontalAlignment="Left" Margin="10,218,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
+        <TextBox x:Name="capacityRoomsTextBox_Copy" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="11,242,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
     </Grid>
 </Window>
