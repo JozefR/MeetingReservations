@@ -15,12 +15,12 @@ namespace ECBMeetingReservations
     public partial class MainWindow : Window
     {
         private static readonly ObservableCollection<MeetingCentreModel> _centres = new ObservableCollection<MeetingCentreModel>();
-        private static readonly List<MeetingRoomModel> _rooms = new List<MeetingRoomModel>();
+        private static readonly ObservableCollection<MeetingRoomModel> _rooms = new ObservableCollection<MeetingRoomModel>();
 
         public MainWindow()
         {
             InitializeComponent();
-            showEntitiesInListBox();
+            showCentresInListBox();
         }
 
         // 1. Handle csv file and parse it to entities. 
@@ -45,7 +45,7 @@ namespace ECBMeetingReservations
 
             else
             {
-                MessageBox.Show("I don't have any file to show data. Sorry :(");
+                MessageBox.Show("I don't have any file to show data.");
             }
 
             //lines = File.ReadLines($@"{path}");
@@ -83,6 +83,7 @@ namespace ECBMeetingReservations
                     handleRoomsData(splitLine);
                 }
             }
+            assignRoomsToCentre();
         }
 
         private void handleRoomsData(string[] splitLine)
@@ -118,6 +119,20 @@ namespace ECBMeetingReservations
             _centres.Add(new MeetingCentreModel(name, code, description));
         }
 
+        private void assignRoomsToCentre()
+        {
+            foreach (var centre in _centres)
+            {
+                foreach (var room in _rooms)
+                {
+                    if (centre == room.MeetingCentre)
+                    {
+                        centre.MeetingRooms.Add(room);
+                    }
+                }
+            }
+        }
+
         // 2. Make Menu nav with Import data, save, exit buttons
 
         //2.1 Import data button
@@ -129,13 +144,31 @@ namespace ECBMeetingReservations
 
         }
 
-        // 3. Show Centre and Rooms entities in listBox. 
+        // 3. Show Centre entities in listBox. 
 
-        private void showEntitiesInListBox()
+        private void showCentresInListBox()
         {
             meetingCentresListBox.ItemsSource = _centres;
         }
 
+        // 4. Show Centre rooms in listBox.
+
+        private void meetingCentresListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var item = meetingCentresListBox.SelectedItem;
+
+            var selectedRooms = new ObservableCollection<MeetingRoomModel>();
+
+            foreach (var centre in _centres)
+            {
+                if (centre == item)
+                {
+                    selectedRooms = centre.MeetingRooms;
+                }
+            }
+
+            meetingRoomsListBox.ItemsSource = selectedRooms;
+        }
 
         private void listMeetingCentre_Click(object sender, RoutedEventArgs e)
         {
@@ -161,6 +194,10 @@ namespace ECBMeetingReservations
         private void editRoomsButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void meetingCentresListBox_Selected(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

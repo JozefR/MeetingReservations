@@ -18,5 +18,13 @@
             VideoConference = video;
             MeetingCentre = meetingCentreModel;
         }
+
+        public string getName
+        {
+            get
+            {
+                return string.Format("{0} {1}", Name, Code);
+            }
+        }
     }
 }
