@@ -23,7 +23,10 @@ namespace ECBMeetingReservations
             {
                 newInputForm();
                 editInputForm();
+                MainWindow main = new MainWindow();
+                main.refreshData();
             }
+
                
         }
 

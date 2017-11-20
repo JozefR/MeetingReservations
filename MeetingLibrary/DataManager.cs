@@ -7,5 +7,6 @@ namespace MeetingLibrary
         public static ObservableCollection<MeetingCentreModel> Centres { get; set; } = new ObservableCollection<MeetingCentreModel>();
         public static ObservableCollection<MeetingRoomModel> Rooms { get; set; } = new ObservableCollection<MeetingRoomModel>();
 
+
     }
 }

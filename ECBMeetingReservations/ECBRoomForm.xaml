@@ -15,12 +15,11 @@
         <TextBox x:Name="codeFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="descriptionFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="roomFormLabel" Content="" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Capacity"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="capacityFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="videoConferenceCheckBox" Content="Video Conference" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="120" Height="24"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="Tower" VerticalAlignment="Top"/>
-        <TextBox x:Name="towerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="10,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Ok" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Storno" HorizontalAlignment="Left" Margin="227,317,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Capacity"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="capacityFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" Width="75" Click="okBtn_Click"/>
+        <Button Content="Storno" HorizontalAlignment="Left" Margin="227,317,0,0" VerticalAlignment="Top" Width="75" Click="stornoBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Text="Video"/>
+        <TextBox x:Name="videoFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
