@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManager.cs" />
     <Compile Include="MeetingCentreModel.cs" />
     <Compile Include="MeetingRoomModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

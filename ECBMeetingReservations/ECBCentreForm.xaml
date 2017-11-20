@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ECBMeetingReservations"
         mc:Ignorable="d"
-        Title="ECBCentreForm" Height="300" Width="300">
+        Title="ECBCentreForm" Height="328.974" Width="319.92">
     <Grid Margin="0,0,0,-4">
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Meeting Centre Form"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
@@ -15,5 +15,7 @@
         <TextBox x:Name="codeFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="descriptionFormTextBox" HorizontalAlignment="Left" Height="23" Margin="10,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="formLabel" HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Button x:Name="okCentreFormBtn" Content="Ok" HorizontalAlignment="Left" Margin="10,243,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="okCentreFormBtn_Click"/>
+        <Button x:Name="stornoCentreFormBtn" Content="Storno" HorizontalAlignment="Left" Margin="207,243,0,39" Width="75" Click="stornoCentreFormBtn_Click"/>
     </Grid>
 </Window>

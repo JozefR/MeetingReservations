@@ -55,10 +55,10 @@
 
         <Button x:Name="newMeetingButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Click="newMeetingButton_Click"/>
         <Button x:Name="editMeegingButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Click="editMeegingButton_Click"/>
-        <Button x:Name="deleteMeetingButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="deleteMeetingButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Click="deleteMeetingButton_Click"/>
         <Button x:Name="newRoomsButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Grid.Column="1" Click="newRoomsButton_Click"/>
         <Button x:Name="editRoomsButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="editRoomsButton_Click"/>
-        <Button x:Name="deleteRoomsButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
+        <Button x:Name="deleteRoomsButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="deleteRoomsButton_Click"/>
         <Label Content="Meeting Centre Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="25"/>
         <Label Content="Meeting Room Details" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="30" Grid.Column="1"/>
         <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
@@ -77,5 +77,6 @@
         <TextBox x:Name="capacityRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Capacity, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="10,198,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
         <Label Content="Video Conference;" FontSize="9" HorizontalAlignment="Left" Margin="10,218,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
         <TextBox x:Name="capacityRoomsTextBox_Copy" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="11,242,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+        <Button x:Name="refreshBtn" Content="Refresh" HorizontalAlignment="Left" Margin="118,235,0,0" VerticalAlignment="Top" Width="75" Click="refreshBtn_Click"/>
     </Grid>
 </Window>
