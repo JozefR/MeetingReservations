@@ -115,9 +115,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MeetingLibrary\MeetingLibrary.csproj">
+    <ProjectReference Include="..\DataRepository\DataRepository.csproj">
+      <Project>{400f2eb9-06bf-4646-83ec-617f36885ad9}</Project>
+      <Name>DataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeetingLibrary\Models.csproj">
       <Project>{66ADF455-2300-4840-8B2E-ACCF3CFBC1EF}</Project>
-      <Name>MeetingLibrary</Name>
+      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
