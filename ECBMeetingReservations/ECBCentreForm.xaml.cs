@@ -26,16 +26,14 @@ namespace ECBMeetingReservations
                 editInputForm();
                 MainWindow main = new MainWindow();
                 main.refreshData();
+                HandleState.ChangingData();
             }
-
-               
         }
 
         private void stornoCentreFormBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
 
         // Handle the input data from user
         private void newInputForm()

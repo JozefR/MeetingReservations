@@ -44,6 +44,7 @@ namespace DataRepository
                 if (splitLine[0] == "MEETING_CENTRES")
                 {
                     centres = true;
+                    rooms = false;
                     continue;
                 }
 

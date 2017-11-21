@@ -33,13 +33,13 @@ namespace DataRepository
             foreach (var center in DataManager.Centres)
             {
                 fs.WriteLine("MEETING_CENTRES");
-                fs.WriteLine(string.Format("{0}, {1}, {2}", center.Name, center.Code, center.Description));
+                fs.WriteLine(string.Format("{0},{1},{2}", center.Name, center.Code, center.Description));
 
                 fs.WriteLine("MEETING_ROOMS");
 
                 foreach (var room in center.MeetingRooms)
                 {
-                    fs.WriteLine(string.Format("{0}, {1}, {2}, {3}, {4}, {5}",
+                    fs.WriteLine(string.Format("{0},{1},{2},{3},{4},{5}",
                         room.Name,
                         room.Code,
                         room.Description,

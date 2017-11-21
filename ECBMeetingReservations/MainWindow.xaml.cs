@@ -12,6 +12,7 @@ namespace ECBMeetingReservations
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
 
     public partial class MainWindow : Window
     {
@@ -22,6 +23,16 @@ namespace ECBMeetingReservations
         {
             InitializeComponent();
             showCentresInListBox();
+
+            // Determine if the app is first time started and load saved data from previous use.
+            if (HandleState.SecondLoading)
+                return;
+            else
+            {
+                LoadData.LoadMeetingDataFromFile(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\MeetingLibrary\ExportData.csv");
+                HandleState.FirstLoading();
+            }
+
         }
 
         // 2. Menu nav with Import data, save, exit buttons
@@ -41,7 +52,28 @@ namespace ECBMeetingReservations
             SaveData.CreateFileWithData();
         }
 
-
+        //2.3 exit button
+        private void exitDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (HandleState.DataChanged)
+            {
+                if (MessageBox.Show("Do you really want to save all data?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
+                {
+                    SaveData.CreateFileWithData();
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+ 
         // 3. Show Centre entities in listBox. 
 
         private void showCentresInListBox()
@@ -71,11 +103,6 @@ namespace ECBMeetingReservations
             }
 
             meetingRoomsListBox.ItemsSource = rooms;
-        }
-
-        private void listMeetingCentre_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("test");
         }
 
         // 5. Create new Meeting centre 

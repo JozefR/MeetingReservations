@@ -29,6 +29,7 @@ namespace ECBMeetingReservations
             {
                 newInputForm();
                 editInputForm();
+                HandleState.ChangingData();
             }
         }
 
