@@ -1,4 +1,6 @@
-﻿using MeetingLibrary;
+﻿using DataRepository;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -6,7 +8,7 @@ using System.Windows;
 
 namespace ECBMeetingReservations
 {
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -16,13 +18,11 @@ namespace ECBMeetingReservations
         private MeetingCentreModel _meetingCentreModel = null;
         private MeetingRoomModel _roomModel = null;
 
-
         public MainWindow()
         {
             InitializeComponent();
             showCentresInListBox();
         }
-
 
         // 2. Menu nav with Import data, save, exit buttons
 
@@ -33,12 +33,14 @@ namespace ECBMeetingReservations
             ImportDataUI importDataUI = new ImportDataUI();
             importDataUI.Show();
         }
+
         //2.2 Save button
 
         private void saveDataBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            SaveData.CreateFileWithData();
         }
+
 
         // 3. Show Centre entities in listBox. 
 

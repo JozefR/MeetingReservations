@@ -1,4 +1,4 @@
-﻿namespace MeetingLibrary
+﻿namespace Models
 {
     public class MeetingRoomModel
     {

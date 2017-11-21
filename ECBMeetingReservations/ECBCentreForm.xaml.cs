@@ -1,6 +1,7 @@
-﻿using MeetingLibrary;
-using System.Windows;
+﻿using System.Windows;
 using System;
+using Models;
+using DataRepository;
 
 namespace ECBMeetingReservations
 {

@@ -1,4 +1,4 @@
-﻿using MeetingLibrary;
+﻿using DataRepository;
 using Microsoft.Win32;
 using System.Windows;
 
@@ -52,7 +52,7 @@ namespace ECBMeetingReservations
         {
             if (_path != null)
             {
-                DataManager.LoadMeetingDataFromFile(_path);
+                LoadData.LoadMeetingDataFromFile(_path);
                 this.Close();
             }
             else
