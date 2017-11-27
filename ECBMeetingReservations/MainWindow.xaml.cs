@@ -146,8 +146,6 @@ namespace ECBMeetingReservations
             centreForm.refreshListCentres(RefreshCentres);
         }
 
-        
-
         // 6. Edit meeting centers
 
         private void editMeegingButton_Click(object sender, RoutedEventArgs e)
