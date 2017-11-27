@@ -1,15 +1,14 @@
-﻿namespace Models
+﻿using MeetingLibrary;
+
+namespace Models
 {
-    public class MeetingRoomModel
-    {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public string Description { get; set; }
+    public class MeetingRoom : MeetingTower
+    { 
         public int Capacity { get; set; }
         public string VideoConference { get; set; }
-        public MeetingCentreModel MeetingCentre { get; set; }
+        public MeetingCentre MeetingCentre { get; set; }
 
-        public MeetingRoomModel(string name, string code, string description, int capacity, string video, MeetingCentreModel meetingCentreModel)
+        public MeetingRoom(string name, string code, string description, int capacity, string video, MeetingCentre meetingCentreModel)
         {
             Name = name;
             Code = code;
@@ -19,12 +18,13 @@
             MeetingCentre = meetingCentreModel;
         }
 
-        public string getName
+        public override string getFullName
         {
             get
             {
                 return string.Format("{0} {1}", Name, Code);
             }
         }
+
     }
 }

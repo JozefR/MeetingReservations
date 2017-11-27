@@ -92,7 +92,7 @@ namespace DataRepository
             {
                 if (centre.Code == centreRoomCode)
                 {
-                    DataManager.Rooms.Add(new MeetingRoomModel(name, code, description, capacity, video, centre));
+                    DataManager.Rooms.Add(new MeetingRoom(name, code, description, capacity, video, centre));
                 }
             }
         }
@@ -104,7 +104,7 @@ namespace DataRepository
             string code = splitLine[1];
             string description = splitLine[2];
 
-            DataManager.Centres.Add(new MeetingCentreModel(name, code, description));
+            DataManager.Centres.Add(new MeetingCentre(name, code, description));
         }
 
         private static void assignRoomsToCentre()

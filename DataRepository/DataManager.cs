@@ -8,11 +8,11 @@ namespace DataRepository
 {
     public static class DataManager
     {
-        public static ObservableCollection<MeetingCentreModel> Centres { get; set; } =
-            new ObservableCollection<MeetingCentreModel>();
+        public static ObservableCollection<MeetingCentre> Centres { get; set; } =
+            new ObservableCollection<MeetingCentre>();
 
-        public static ObservableCollection<MeetingRoomModel> Rooms { get; set; } = 
-            new ObservableCollection<MeetingRoomModel>();
+        public static ObservableCollection<MeetingRoom> Rooms { get; set; } =
+            new ObservableCollection<MeetingRoom>();
 
 
     }

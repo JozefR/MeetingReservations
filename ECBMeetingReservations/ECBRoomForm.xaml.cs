@@ -2,6 +2,7 @@
 using System;
 using DataRepository;
 using Models;
+using System.Windows.Controls;
 
 namespace ECBMeetingReservations
 {
@@ -10,8 +11,9 @@ namespace ECBMeetingReservations
     /// </summary>
     public partial class ECBRoomForm : Window
     {
-        private MeetingCentreModel _centreModel = null;
-        private MeetingRoomModel _meetingRoom = null;
+        private MeetingCentre _centreModel = null;
+        private MeetingRoom _meetingRoom = null;
+        private ListBox _refreshData;
 
         public ECBRoomForm()
         {
@@ -30,6 +32,7 @@ namespace ECBMeetingReservations
                 newInputForm();
                 editInputForm();
                 HandleState.ChangingData();
+                _refreshData.Items.Refresh();
             }
         }
 
@@ -38,7 +41,7 @@ namespace ECBMeetingReservations
             this.Close();
         }
 
-        internal void roomFormNew(MeetingCentreModel meetingCentreModel)
+        internal void roomFormNew(MeetingCentre meetingCentreModel)
         {
             _centreModel = meetingCentreModel;
         }
@@ -48,7 +51,7 @@ namespace ECBMeetingReservations
         {
             if (_meetingRoom == null)
             {
-                _meetingRoom = new MeetingRoomModel
+                _meetingRoom = new MeetingRoom
                     (nameFormTextBox.Text,
                     codeFormTextBox.Text,
                     descriptionFormTextBox.Text,
@@ -71,11 +74,10 @@ namespace ECBMeetingReservations
 
 
         // 2. Show selected room for edit
-        internal void roomFormEdit(string text1, string text2, string text3, int v, string text4, MeetingRoomModel roomModel)
+        internal void roomFormEdit(MeetingRoom roomModel, ListBox refresh)
         {
             _meetingRoom = roomModel;
             showCelectedRoomInEdit();
-
         }
 
         private void showCelectedRoomInEdit()
@@ -135,6 +137,8 @@ namespace ECBMeetingReservations
         private bool centreFormValidation()
         {
             int a = 0;
+            var video = videoFormTextBox.Text.ToLower();
+
             if (nameFormTextBox.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Please enter the name.");
@@ -150,9 +154,9 @@ namespace ECBMeetingReservations
                 MessageBox.Show("Please enter the description.");
                 return false;
             }
-            else if (videoFormTextBox.Text != "YES" && videoFormTextBox.Text != "NO")
+            else if (video != "yes" && video != "no") 
             {
-                MessageBox.Show("Please select YES or NO for video.");
+                MessageBox.Show("Please select Yes or No for video.");
                 return false;
             }
             else if (!int.TryParse(capacityFormTextBox.Text, out a))
@@ -164,6 +168,11 @@ namespace ECBMeetingReservations
             {
                 return true;
             }
+        }
+
+        internal void refreshListRooms(ListBox refreshRooms)
+        {
+            _refreshData = refreshRooms;
         }
     }
 }

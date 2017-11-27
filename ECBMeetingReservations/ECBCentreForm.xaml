@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ECBMeetingReservations"
         mc:Ignorable="d"
         Title="ECBCentreForm" Height="328.974" Width="319.92">
-    <Grid Margin="0,0,0,-4">
+    <Grid x:Name="centreFormDataGrid" Margin="0,0,0,-4">
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="Meeting Centre Form"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,129,0,0" TextWrapping="Wrap" Text="Code" VerticalAlignment="Top"/>

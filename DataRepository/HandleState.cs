@@ -15,10 +15,18 @@ namespace DataRepository
         {
             SecondLoading = true;
         }
-
+        /// <summary>
+        /// Data was changed ask if you want save all changes
+        /// </summary>
         public static void ChangingData()
         {
             DataChanged = true;
         }
+        public static void ChangingDataToFalse()
+        {
+            DataChanged = false;
+        }
+
+
     }
 }

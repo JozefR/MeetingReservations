@@ -1,10 +1,8 @@
 ﻿using DataRepository;
 using Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ECBMeetingReservations
 {
@@ -12,17 +10,20 @@ namespace ECBMeetingReservations
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
-
     public partial class MainWindow : Window
     {
-        private MeetingCentreModel _meetingCentreModel = null;
-        private MeetingRoomModel _roomModel = null;
+        private MeetingCentre _meetingCentreModel = null;
+        private MeetingRoom _roomModel = null;
+        public ListBox RefreshCentres { get; set; }
+        public ListBox RefreshRooms { get; set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
             showCentresInListBox();
+            RefreshCentres = meetingCentresListBox;
+            RefreshRooms = meetingRoomsListBox;
 
             // Determine if the app is first time started and load saved data from previous use.
             if (HandleState.SecondLoading)
@@ -50,11 +51,14 @@ namespace ECBMeetingReservations
         private void saveDataBtn_Click(object sender, RoutedEventArgs e)
         {
             SaveData.CreateFileWithData();
+            // Data was already saved... 
+            HandleState.ChangingDataToFalse();
         }
 
         //2.3 exit button
         private void exitDataBtn_Click(object sender, RoutedEventArgs e)
         {
+            // If data was already saved exit app if not pop up message.
             if (HandleState.DataChanged)
             {
                 if (MessageBox.Show("Do you really want to save all data?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question)
@@ -92,7 +96,7 @@ namespace ECBMeetingReservations
         {
             var item = meetingCentresListBox.SelectedItem;
 
-            var rooms = new ObservableCollection<MeetingRoomModel>();
+            var rooms = new ObservableCollection<MeetingRoom>();
 
             foreach (var centre in DataManager.Centres)
             {
@@ -111,7 +115,10 @@ namespace ECBMeetingReservations
         {
             ECBCentreForm centreForm = new ECBCentreForm();
             centreForm.Show();
+            centreForm.refreshListCentres(RefreshCentres);
         }
+
+        
 
         // 6. Edit meeting centers
 
@@ -120,15 +127,15 @@ namespace ECBMeetingReservations
             if (meetingCentresListBox.SelectedItem != null)
             {
                 meetingCentresListBox.Items.Refresh();
-                _meetingCentreModel = meetingCentresListBox.SelectedItem as MeetingCentreModel;
+                _meetingCentreModel = meetingCentresListBox.SelectedItem as MeetingCentre;
                 ECBCentreForm centreForm = new ECBCentreForm();
-                centreForm.centreFormEdit(nameCentresTextBox.Text, codeCentresTextBox.Text, descriptionCentresTextBox.Text, _meetingCentreModel);
-                centreForm.Show();   
+                centreForm.centreFormEdit(_meetingCentreModel, RefreshCentres);
+                centreForm.Show();
             }
-            refreshData();
+            
         }
 
-
+        //7. create new room 
 
         private void newRoomsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -136,8 +143,9 @@ namespace ECBMeetingReservations
             {
                 ECBRoomForm ecbRoom = new ECBRoomForm();
                 ecbRoom.Show();
-                _meetingCentreModel = meetingCentresListBox.SelectedItem as MeetingCentreModel;
+                _meetingCentreModel = meetingCentresListBox.SelectedItem as MeetingCentre;
                 ecbRoom.roomFormNew(_meetingCentreModel);
+                ecbRoom.refreshListRooms(RefreshRooms);
             }
             else
             {
@@ -145,26 +153,23 @@ namespace ECBMeetingReservations
             }
         }
 
+        //8. edit existing rooom
+
         private void editRoomsButton_Click(object sender, RoutedEventArgs e)
         {
             if (meetingRoomsListBox.SelectedItem != null)
             {
                 meetingRoomsListBox.Items.Refresh();
-                _roomModel = meetingRoomsListBox.SelectedItem as MeetingRoomModel;
+                _roomModel = meetingRoomsListBox.SelectedItem as MeetingRoom;
                 ECBRoomForm roomForm = new ECBRoomForm();
-                roomForm.roomFormEdit(nameRoomsTextBox.Text, codeRoomsTextBox.Text, descriptionRoomsTextBox.Text,int.Parse(capacityRoomsTextBox.Text),videoRoomsTextBox.Text, _roomModel);
+                roomForm.roomFormEdit(_roomModel, RefreshRooms);
                 roomForm.Show();
+                roomForm.refreshListRooms(RefreshRooms);
                 showRoomsInListBox();
             }
         }
 
-
-
-        private void refreshBtn_Click(object sender, RoutedEventArgs e)
-        {
-            refreshData();
-        }
-
+        // 9.1 delete center
         private void deleteMeetingButton_Click(object sender, RoutedEventArgs e)
         {
             if (meetingCentresListBox.SelectedItem != null)
@@ -172,10 +177,12 @@ namespace ECBMeetingReservations
                 if (MessageBox.Show("Do you really want to delete selected Centre?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question)
                   == MessageBoxResult.Yes)
                 {
-                    DataManager.Centres.Remove(meetingCentresListBox.SelectedItem as MeetingCentreModel);
+                    DataManager.Centres.Remove(meetingCentresListBox.SelectedItem as MeetingCentre);
+                    HandleState.ChangingData();
                 }
             }
         }
+        //9.2 delete room
 
         private void deleteRoomsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -190,8 +197,8 @@ namespace ECBMeetingReservations
                         {
                             if(room == meetingRoomsListBox.SelectedItem)
                             {
-                                center.MeetingRooms.Remove(meetingRoomsListBox.SelectedItem as MeetingRoomModel);
-                                DataManager.Rooms.Remove(meetingRoomsListBox.SelectedItem as MeetingRoomModel);
+                                center.MeetingRooms.Remove(meetingRoomsListBox.SelectedItem as MeetingRoom);
+                                DataManager.Rooms.Remove(meetingRoomsListBox.SelectedItem as MeetingRoom);
                                 break;
                             }
                         }
@@ -199,13 +206,5 @@ namespace ECBMeetingReservations
                 }
             }
         }
-
-        public void refreshData()
-        {
-            meetingCentresListBox.Items.Refresh();
-            meetingRoomsListBox.Items.Refresh();
-        }
-
-
     }
 }

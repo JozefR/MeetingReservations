@@ -2,6 +2,7 @@
 using System;
 using Models;
 using DataRepository;
+using System.Windows.Controls;
 
 namespace ECBMeetingReservations
 {
@@ -10,7 +11,8 @@ namespace ECBMeetingReservations
     /// </summary>
     public partial class ECBCentreForm : Window
     {
-        private MeetingCentreModel _centreModel = null;
+        private MeetingCentre _centreModel = null;
+        private ListBox _refreshData;
 
         public ECBCentreForm()
         {
@@ -24,9 +26,9 @@ namespace ECBMeetingReservations
             {
                 newInputForm();
                 editInputForm();
-                MainWindow main = new MainWindow();
-                main.refreshData();
                 HandleState.ChangingData();
+                _refreshData.Items.Refresh();
+                
             }
         }
 
@@ -41,16 +43,17 @@ namespace ECBMeetingReservations
             
             if (_centreModel == null)
             {
-                _centreModel = new MeetingCentreModel(nameFormTextBox.Text, codeFormTextBox.Text, descriptionFormTextBox.Text);
+                _centreModel = new MeetingCentre(nameFormTextBox.Text, codeFormTextBox.Text, descriptionFormTextBox.Text);
                 DataManager.Centres.Add(_centreModel);
                 this.Close();
             }
         }
 
         // 1. Get data from main ui after clicking on edit btn.
-        internal void centreFormEdit(string name, string code, string description, MeetingCentreModel centreModel)
+        internal void centreFormEdit(MeetingCentre centreModel, ListBox refresh)
         {
             _centreModel = centreModel;
+            _refreshData = refresh;
             showSelectedCentreInEdit();
         }
 
@@ -125,5 +128,9 @@ namespace ECBMeetingReservations
             }
         }
 
+        internal void refreshListCentres(ListBox refreshCentres)
+        {
+            _refreshData = refreshCentres;
+        }
     }
 }
