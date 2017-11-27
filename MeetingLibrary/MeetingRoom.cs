@@ -18,7 +18,7 @@ namespace Models
             MeetingCentre = meetingCentreModel;
         }
 
-        public override string getFullName
+        public override string GetFullName
         {
             get
             {

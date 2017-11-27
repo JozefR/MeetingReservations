@@ -6,6 +6,6 @@
         public string Code { get; set; }
         public string Description { get; set; }
 
-        abstract public string getFullName { get; }
+        abstract public string GetFullName { get; }
     }
 }

@@ -34,7 +34,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width= "*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding getFullName}" />
+                        <TextBlock Text="{Binding GetFullName}" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -47,7 +47,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width= "*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding getFullName}" />
+                        <TextBlock Text="{Binding GetFullName}" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

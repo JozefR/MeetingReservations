@@ -16,7 +16,7 @@ namespace Models
             MeetingRooms = new ObservableCollection<MeetingRoom>();
         }
   
-        public override string getFullName
+        public override string GetFullName
         {
             get
             {
