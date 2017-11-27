@@ -5,77 +5,137 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ECBMeetingReservations"
         mc:Ignorable="d"
-        Title="MainWindow" Height="621.465" Width="546.549">
-    <Grid Margin="0,-1,0,1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        Title="MainWindow" Height="853.465" Width="546.549">
+    <TabControl HorizontalAlignment="Left" Height="823" VerticalAlignment="Top" Width="528" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0,0,0,-1">
+        <TabItem Header="TabItem">
+            <Grid Background="#FFE5E5E5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2">
-            <MenuItem Header="File" Height="17" Width="146">
-                <MenuItem x:Name="importDataBtn" Header="Import Data" HorizontalAlignment="Left" Height="20" Width="152" Margin="0,0,-12,0" Click="importDataBtn_Click"/>
-                <MenuItem x:Name="saveDataBtn" Header="Save" HorizontalAlignment="Left" Height="20" Width="140" Click="saveDataBtn_Click"/>
-                <MenuItem x:Name="exitDataBtn" Header="Exit" HorizontalAlignment="Left" Height="20" Width="140" Click="exitDataBtn_Click"/>
-            </MenuItem>
-        </Menu>
-        <Label Content="Meeting Centres" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25"/>
-        <Label Content="Meeting Rooms" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25" Grid.Column="1"/>
+                <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2">
+                    <MenuItem Header="File" Height="17" Width="146">
+                        <MenuItem x:Name="importDataBtn" Header="Import Data" HorizontalAlignment="Left" Height="20" Width="152" Margin="0,0,-12,0" Click="importDataBtn_Click"/>
+                        <MenuItem x:Name="saveDataBtn" Header="Save" HorizontalAlignment="Left" Height="20" Width="140" Click="saveDataBtn_Click"/>
+                        <MenuItem x:Name="exitDataBtn" Header="Exit" HorizontalAlignment="Left" Height="20" Width="140" Click="exitDataBtn_Click"/>
+                    </MenuItem>
+                </Menu>
+                <Label Content="Meeting Centres" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25"/>
+                <Label Content="Meeting Rooms" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="99" Height="25" Grid.Column="1"/>
 
-        <ListBox x:Name="meetingCentresListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238" SelectionChanged="meetingCentresListBox_SelectionChanged" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="0,2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width= "*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding GetFullName}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                <ListBox x:Name="meetingCentresListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238" SelectionChanged="meetingCentresListBox_SelectionChanged" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width= "*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding GetFullName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-        <ListBox x:Name="meetingRoomsListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238" Grid.Column="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="0,2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width= "*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding GetFullName}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                <ListBox x:Name="meetingRoomsListBox" HorizontalAlignment="Left" Height="125" Margin="10,62,0,0" VerticalAlignment="Top" Width="238" Grid.Column="1">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width= "*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding GetFullName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-        <Button x:Name="newMeetingButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Click="newMeetingButton_Click"/>
-        <Button x:Name="editMeegingButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Click="editMeegingButton_Click"/>
-        <Button x:Name="deleteMeetingButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Click="deleteMeetingButton_Click"/>
-        <Button x:Name="newRoomsButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Grid.Column="1" Click="newRoomsButton_Click"/>
-        <Button x:Name="editRoomsButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="editRoomsButton_Click"/>
-        <Button x:Name="deleteRoomsButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="deleteRoomsButton_Click"/>
-        <Label Content="Meeting Centre Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="25"/>
-        <Label Content="Meeting Room Details" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="30" Grid.Column="1"/>
-        <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,87,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
-        <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,138,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24"/>
-        <TextBox x:Name="nameCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="25" Margin="10,62,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="238"></TextBox>
-        <TextBox x:Name="codeCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Code, Mode=OneWay}" HorizontalAlignment="Left" Height="29" Margin="8,109,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="238"></TextBox>
-        <TextBox x:Name="descriptionCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Description, Mode=OneWay}" HorizontalAlignment="Left" Height="50" Margin="10,162,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Grid.Column="1"/>
-        <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,119,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
-        <TextBox x:Name="nameRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="24" Margin="10,47,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <TextBox x:Name="codeRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Code, Mode=OneWay}" HorizontalAlignment="Left" Height="21" Margin="10,93,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <TextBox x:Name="descriptionRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Description, Mode=OneWay}" HorizontalAlignment="Left" Height="21" Margin="10,148,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <Label Content="Capacity" FontSize="9" HorizontalAlignment="Left" Margin="11,174,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
-        <TextBox x:Name="capacityRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Capacity, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="10,198,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-        <Label Content="Video Conference;" FontSize="9" HorizontalAlignment="Left" Margin="10,218,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
-        <TextBox x:Name="videoRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="11,242,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
-    </Grid>
+                <Button x:Name="newMeetingButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Click="newMeetingButton_Click"/>
+                <Button x:Name="editMeegingButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Click="editMeegingButton_Click"/>
+                <Button x:Name="deleteMeetingButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Click="deleteMeetingButton_Click"/>
+                <Button x:Name="newRoomsButton" Content="New" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="45" Height="20" Grid.Column="1" Click="newRoomsButton_Click"/>
+                <Button x:Name="editRoomsButton" Content="Edit" HorizontalAlignment="Left" Margin="60,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="editRoomsButton_Click"/>
+                <Button x:Name="deleteRoomsButton" Content="Delete" HorizontalAlignment="Left" Margin="199,192,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1" Click="deleteRoomsButton_Click"/>
+                <Label Content="Meeting Centre Details" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="25"/>
+                <Label Content="Meeting Room Details" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Height="30" Grid.Column="1"/>
+                <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,87,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
+                <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,138,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24"/>
+                <TextBox x:Name="nameCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="25" Margin="10,62,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="238"></TextBox>
+                <TextBox x:Name="codeCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Code, Mode=OneWay}" HorizontalAlignment="Left" Height="29" Margin="8,109,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="238"></TextBox>
+                <TextBox x:Name="descriptionCentresTextBox" Text="{Binding ElementName=meetingCentresListBox, Path=SelectedValue.Description, Mode=OneWay}" HorizontalAlignment="Left" Height="50" Margin="10,162,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+                <Label Content="Name" FontSize="9" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label Content="Code" FontSize="9" HorizontalAlignment="Left" Margin="10,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Grid.Column="1"/>
+                <Label Content="Description" FontSize="9" HorizontalAlignment="Left" Margin="10,119,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
+                <TextBox x:Name="nameRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="24" Margin="10,47,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+                <TextBox x:Name="codeRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Code, Mode=OneWay}" HorizontalAlignment="Left" Height="21" Margin="10,93,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+                <TextBox x:Name="descriptionRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Description, Mode=OneWay}" HorizontalAlignment="Left" Height="21" Margin="10,148,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+                <Label Content="Capacity" FontSize="9" HorizontalAlignment="Left" Margin="11,174,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
+                <TextBox x:Name="capacityRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.Capacity, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="10,198,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+                <Label Content="Video Conference;" FontSize="9" HorizontalAlignment="Left" Margin="10,218,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="1"/>
+                <TextBox x:Name="videoRoomsTextBox" Text="{Binding ElementName=meetingRoomsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="11,242,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="TabItem">
+            <Grid Background="#FFE5E5E5" Margin="0,0,-28,-111" Height="798" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings Planning"/><LineBreak/><Run/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meeting Centre"/><LineBreak/><Run/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meeting Room"/><LineBreak/><Run/></TextBlock>
+
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,56,0,0" x:Name="MeetingCentreCombo" VerticalAlignment="Top" Width="281" BorderBrush="Black" IsEditable="True" TextSearch.TextPath="GetFullName" SelectionChanged="MeetingCentreCombo_SelectionChanged" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding GetFullName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,115,0,0" x:Name="MeetingRoomCombo" VerticalAlignment="Top" Width="281" BorderBrush="Black" IsEditable="True" TextSearch.TextPath="GetFullName" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding GetFullName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Date"/><LineBreak/><Run/></TextBlock>
+                <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings"/><LineBreak/><Run/></TextBlock>
+                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="224" Margin="10,221,0,0" VerticalAlignment="Top" Width="281"/>
+                <Button x:Name="NewButton" Content="New" HorizontalAlignment="Left" Margin="10,450,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="90,450,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="216,450,0,0" VerticalAlignment="Top" Width="75"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings Details"/><LineBreak/><Run/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="From"/>
+                <TextBlock HorizontalAlignment="Left" Margin="57,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="To"/>
+                <TextBox x:Name="FromDateHour" HorizontalAlignment="Left" Height="23" Margin="10,538,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="FromDateMinute" HorizontalAlignment="Left" Height="23" Margin="57,538,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="ToDateHour" HorizontalAlignment="Left" Height="23" Margin="125,538,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="ToDateMinute"  HorizontalAlignment="Left" Height="23" Margin="170,538,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Expected persons count"/><LineBreak/><Run/></TextBlock>
+                <TextBox x:Name="PersonsCountTextBox" HorizontalAlignment="Left" Height="23" Margin="10,591,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,619,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Text="Customer"/>
+                <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Height="23" Margin="10,644,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
+                <CheckBox x:Name="VideoCheckBox" Content="Video Conference" HorizontalAlignment="Left" Margin="10,672,0,0" VerticalAlignment="Top" Height="20" Width="200"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,697,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Text="Note" Width="40"/>
+                <TextBox x:Name="NoteTextBox" HorizontalAlignment="Left" Height="68" Margin="10,720,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>

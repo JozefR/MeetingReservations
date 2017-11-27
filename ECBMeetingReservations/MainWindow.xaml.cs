@@ -1,5 +1,6 @@
 ﻿using DataRepository;
 using Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,11 +21,6 @@ namespace ECBMeetingReservations
 
         public MainWindow()
         {
-            InitializeComponent();
-            showCentresInListBox();
-            RefreshCentres = meetingCentresListBox;
-            RefreshRooms = meetingRoomsListBox;
-
             // Determine if the app is first time started and load saved data from previous use.
             if (HandleState.SecondLoading)
                 return;
@@ -34,6 +30,10 @@ namespace ECBMeetingReservations
                 HandleState.FirstLoading();
             }
 
+            InitializeComponent();
+            showCentresInListBox();
+            RefreshCentres = meetingCentresListBox;
+            RefreshRooms = meetingRoomsListBox;
         }
 
         // 2. Menu nav with Import data, save, exit buttons
@@ -78,11 +78,39 @@ namespace ECBMeetingReservations
             }
         }
  
-        // 3. Show Centre entities in listBox. 
-
+        /// <summary>
+        /// Show centre entities in listbox and combobox.
+        /// </summary>
         private void showCentresInListBox()
         {
             meetingCentresListBox.ItemsSource = DataManager.Centres;
+            MeetingCentreCombo.ItemsSource = DataManager.Centres;
+
+        }
+
+        /// <summary>
+        /// Show all rooms in selected center.
+        /// </summary>
+        private void showRoomsInComboBox()
+        {
+            var item = MeetingCentreCombo.SelectedItem;
+
+            var rooms = new ObservableCollection<MeetingRoom>();
+
+            foreach (var centre in DataManager.Centres)
+            {
+                if (centre == item)
+                {
+                    rooms = centre.MeetingRooms;
+                }
+            }
+
+            MeetingRoomCombo.ItemsSource = rooms;
+        }
+
+        private void MeetingCentreCombo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            showRoomsInComboBox();
         }
 
         // 4. Show Centre rooms in listBox.
@@ -206,5 +234,9 @@ namespace ECBMeetingReservations
                 }
             }
         }
+
+        //////////////Druha cast ukolu
+
+       
     }
 }
