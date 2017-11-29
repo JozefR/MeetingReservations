@@ -1,9 +1,9 @@
 ﻿using Models;
 using System;
 
-namespace MeetingLibrary
+namespace Models
 {
-    class MeetingPlanning
+    public class MeetingPlanning
     {
         public MeetingRoom MeetingRoom { get; set; }
         public DateTime Date { get; set; }

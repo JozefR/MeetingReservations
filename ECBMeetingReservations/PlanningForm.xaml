@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PlanningForm" Height="340" Width="300">
     <Grid>
-        <TextBox x:Name="FromPlanHour" HorizontalAlignment="Left" Height="23" Margin="28,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"/>
+        <TextBox x:Name="FromPlanHour" HorizontalAlignment="Left" Height="23" Margin="28,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"/>
         <TextBox x:Name="FromPlanMinute" HorizontalAlignment="Left" Height="23" Margin="77,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"/>
         <TextBox x:Name="ToPlanHour" HorizontalAlignment="Left" Height="23" Margin="134,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"/>
         <TextBox x:Name="ToPlanMinute" HorizontalAlignment="Left" Height="23" Margin="190,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"/>
@@ -20,7 +20,7 @@
         <CheckBox x:Name="VideoCheckBox" Content="VideoConference&#xD;&#xA;" HorizontalAlignment="Left" Margin="28,165,0,0" VerticalAlignment="Top" Height="18"/>
         <TextBlock HorizontalAlignment="Left" Margin="28,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Text="Note"/>
         <TextBox x:Name="NoteTextBox" HorizontalAlignment="Left" Height="39" Margin="28,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="StornoButton" Content="Storno" HorizontalAlignment="Left" Margin="207,278,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" Width="75" Click="OkButton_Click"/>
+        <Button x:Name="StornoButton" Content="Storno" HorizontalAlignment="Left" Margin="207,278,0,0" VerticalAlignment="Top" Width="75" Click="StornoButton_Click"/>
     </Grid>
 </Window>

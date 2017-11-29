@@ -118,9 +118,9 @@
                 <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings"/><LineBreak/><Run/></TextBlock>
                 <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281"/>
-                <Button x:Name="NewButton" Content="New" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="90,377,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="216,377,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="NewPlanningButton" Content="New" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="75" Click="NewPlanningButton_Click"/>
+                <Button x:Name="EditPlanningButton" Content="Edit" HorizontalAlignment="Left" Margin="90,377,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="DeletePlanningButton" Content="Delete" HorizontalAlignment="Left" Margin="216,377,0,0" VerticalAlignment="Top" Width="75"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings Details"/><LineBreak/><Run/></TextBlock>
                 <TextBlock HorizontalAlignment="Left" Margin="10,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="From"/>
                 <TextBlock HorizontalAlignment="Left" Margin="50,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="To"/>

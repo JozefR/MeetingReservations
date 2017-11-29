@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using MeetingLibrary;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace DataRepository
         public static ObservableCollection<MeetingRoom> Rooms { get; set; } =
             new ObservableCollection<MeetingRoom>();
 
-
+        public static ObservableCollection<MeetingPlanning> Planning { get; set; } =
+            new ObservableCollection<MeetingPlanning>();
     }
 }

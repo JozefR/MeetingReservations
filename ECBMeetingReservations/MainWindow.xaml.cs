@@ -233,8 +233,43 @@ namespace ECBMeetingReservations
             }
         }
 
-        //////////////Druha cast ukolu
+        /// <summary>
+        /// Create new Meeting Planning Reservation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewPlanningButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxDateValidation(MeetingRoomCombo,ReservationDatePicker))
+            {
+                PlanningForm planningForm = new PlanningForm();
+                planningForm.Show();
+                planningForm.NewInputForm(MeetingRoomCombo, ReservationDatePicker);
+            }
+        }
 
-       
+        /// <summary>
+        /// Validation for comboBox and DatePicker
+        /// </summary>
+        /// <param name="meetingCombo"></param>
+        /// <param name="reservationDatePicker"></param>
+        /// <returns></returns>
+        private bool listBoxDateValidation(ComboBox meetingCombo, DatePicker reservationDatePicker)
+        {
+            if (meetingCombo.SelectedItem == null)
+            {
+                MessageBox.Show("Please select room.");
+                return false;
+            }
+            else if (reservationDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Please select some date.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
