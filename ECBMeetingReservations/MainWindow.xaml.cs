@@ -120,6 +120,11 @@ namespace ECBMeetingReservations
             showRoomsInListBox();
         }
 
+        private void ReservationDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            showReservationsInListBox();
+        }
+
         private void showRoomsInListBox()
         {
             var item = meetingCentresListBox.SelectedItem;
@@ -135,6 +140,23 @@ namespace ECBMeetingReservations
             }
 
             meetingRoomsListBox.ItemsSource = rooms;
+        }
+
+        private void showReservationsInListBox()
+        {
+            var item = MeetingRoomCombo.SelectedItem;
+
+            var reservations = new ObservableCollection<MeetingReservation>();
+
+            foreach (var room in DataManager.Rooms)
+            {
+                if (room == item)
+                {
+                    reservations = room.MeetingReservations;
+                }
+            }
+
+            MeetingsListBox.ItemsSource = reservations;
         }
 
         // 5. Create new Meeting centre 
@@ -271,5 +293,7 @@ namespace ECBMeetingReservations
                 return true;
             }
         }
+
+
     }
 }

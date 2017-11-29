@@ -115,9 +115,24 @@
                 </ComboBox>
 
                 <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Date"/><LineBreak/><Run/></TextBlock>
-                <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281"/>
+                <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281" SelectedDateChanged="ReservationDatePicker_SelectedDateChanged"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings"/><LineBreak/><Run/></TextBlock>
-                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281"/>
+
+                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width= "*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding GetFullName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+
                 <Button x:Name="NewPlanningButton" Content="New" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="75" Click="NewPlanningButton_Click"/>
                 <Button x:Name="EditPlanningButton" Content="Edit" HorizontalAlignment="Left" Margin="90,377,0,0" VerticalAlignment="Top" Width="75"/>
                 <Button x:Name="DeletePlanningButton" Content="Delete" HorizontalAlignment="Left" Margin="216,377,0,0" VerticalAlignment="Top" Width="75"/>

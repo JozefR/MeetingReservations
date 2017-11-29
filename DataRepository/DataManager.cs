@@ -15,7 +15,7 @@ namespace DataRepository
         public static ObservableCollection<MeetingRoom> Rooms { get; set; } =
             new ObservableCollection<MeetingRoom>();
 
-        public static ObservableCollection<MeetingPlanning> Planning { get; set; } =
-            new ObservableCollection<MeetingPlanning>();
+        public static ObservableCollection<MeetingReservation> Reservation { get; set; } =
+            new ObservableCollection<MeetingReservation>();
     }
 }

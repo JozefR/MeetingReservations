@@ -13,7 +13,7 @@ namespace ECBMeetingReservations
     /// </summary>
     public partial class PlanningForm : Window
     {
-        private MeetingPlanning _meetingPlanning = null;
+        private MeetingReservation _meetingReservation = null;
 
         public PlanningForm()
         {
@@ -39,11 +39,11 @@ namespace ECBMeetingReservations
         /// </summary>
         internal void NewInputForm(ComboBox meeetingCombo, DatePicker reservationDatePicker)
         {
-            if (_meetingPlanning == null)
+            if (_meetingReservation == null)
             {
-                _meetingPlanning = new MeetingPlanning();
-                _meetingPlanning.Date = (DateTime)reservationDatePicker.SelectedDate;
-                _meetingPlanning.MeetingRoom = (MeetingRoom)meeetingCombo.SelectedItem;
+                _meetingReservation = new MeetingReservation();
+                _meetingReservation.Date = (DateTime)reservationDatePicker.SelectedDate;
+                _meetingReservation.MeetingRoom = (MeetingRoom)meeetingCombo.SelectedItem;
             }
             else
             {
@@ -60,13 +60,20 @@ namespace ECBMeetingReservations
             TimeSpan timeFrom = new TimeSpan(int.Parse(FromPlanHour.Text), int.Parse(FromPlanMinute.Text),0);
             TimeSpan timeTo = new TimeSpan(int.Parse(ToPlanHour.Text), int.Parse(ToPlanMinute.Text), 0);
 
-            _meetingPlanning.TimeFrom = timeFrom;
-            _meetingPlanning.TimeTo = timeTo;
-            _meetingPlanning.ExpectedPersonsCount = int.Parse(ExpectedPersonsTextBox.Text);
-            _meetingPlanning.Customer = CustomerTextBox.Text;
-            _meetingPlanning.VideoConference = (bool)VideoCheckBox.IsChecked;
-            _meetingPlanning.Note = NoteTextBox.Text;
-            DataManager.Planning.Add(_meetingPlanning);
+            _meetingReservation.TimeFrom = timeFrom;
+            _meetingReservation.TimeTo = timeTo;
+            _meetingReservation.ExpectedPersonsCount = int.Parse(ExpectedPersonsTextBox.Text);
+            _meetingReservation.Customer = CustomerTextBox.Text;
+            _meetingReservation.VideoConference = (bool)VideoCheckBox.IsChecked;
+            _meetingReservation.Note = NoteTextBox.Text;
+            DataManager.Reservation.Add(_meetingReservation);
+            foreach (var room in DataManager.Rooms)
+            {
+                if (room == _meetingReservation.MeetingRoom)
+                {
+                    room.MeetingReservations.Add(_meetingReservation);
+                }
+            }
         }
 
         /// <summary>
@@ -112,9 +119,9 @@ namespace ECBMeetingReservations
                 MessageBox.Show("Expected persons must be a number!");
                 return false;
             }
-            else if (persons > _meetingPlanning.MeetingRoom.Capacity)
+            else if (persons > _meetingReservation.MeetingRoom.Capacity)
             {
-                MessageBox.Show($"Too many persons! Maximum {_meetingPlanning.MeetingRoom.Capacity.ToString()}");
+                MessageBox.Show($"Too many persons! Maximum {_meetingReservation.MeetingRoom.Capacity.ToString()}");
                 return false;
             }
             else if (CustomerTextBox.Text.Trim().Length == 0)

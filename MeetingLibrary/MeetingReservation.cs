@@ -3,7 +3,7 @@ using System;
 
 namespace Models
 {
-    public class MeetingPlanning
+    public class MeetingReservation
     {
         public MeetingRoom MeetingRoom { get; set; }
         public DateTime Date { get; set; }
@@ -13,5 +13,13 @@ namespace Models
         public string Customer { get; set; }
         public bool VideoConference { get; set; }
         public string Note { get; set; }
+
+        public string GetFullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", Customer, TimeFrom);
+            }
+        }
     }
 }

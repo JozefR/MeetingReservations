@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MeetingCentre.cs" />
-    <Compile Include="MeetingPlanning.cs" />
+    <Compile Include="MeetingReservation.cs" />
     <Compile Include="MeetingRoom.cs" />
     <Compile Include="MeetingTower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
