@@ -21,5 +21,38 @@ namespace Models
                 return string.Format("{0} {1}", Customer, TimeFrom);
             }
         }
+
+        public string GetTimeFromHour
+        {
+            get
+            {
+                return string.Format("{0}", TimeFrom.Hours);
+            }
+        }
+
+        public string GetTimeFromMinute
+        {
+            get
+            {
+                return string.Format("{0}", TimeFrom.Minutes);
+            }
+        }
+
+        public string GetTimeToHour
+        {
+            get
+            {
+                return string.Format("{0}", TimeTo.Hours);
+            }
+        }
+
+        public string GetTimeToMinute
+        {
+            get
+            {
+                return string.Format("{0}", TimeTo.Minutes);
+            }
+        }
+
     }
 }

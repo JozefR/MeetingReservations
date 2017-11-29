@@ -5,6 +5,7 @@ using DataRepository;
 using System;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace ECBMeetingReservations
 {
@@ -82,28 +83,34 @@ namespace ECBMeetingReservations
         /// <returns></returns>
         private bool PlanningFormValidation()
         {
-            string pattern = @"([0-9]{0,2}\:[0-9]{0,2})";
 
-            if (!int.TryParse(FromPlanHour.Text, out int timeFrom))
+
+            if (!int.TryParse(FromPlanHour.Text, out int TimeFromHour))
             {
                 MessageBox.Show("Input time must be a number");
                 return false;
             }
-            else if (!int.TryParse(FromPlanMinute.Text, out int timeFromMinute))
+            if (!int.TryParse(FromPlanMinute.Text, out int timeFromMinute))
             {
-                MessageBox.Show("selected time is not correct>");
+                MessageBox.Show("time must be a number");
                 return false;
             }
-            else if (!int.TryParse(ToPlanHour.Text, out int timeTohour))
+            if (!int.TryParse(ToPlanHour.Text, out int timeTohour))
             {
-                MessageBox.Show("selected time is not correct>");
+                MessageBox.Show("time must be a number");
                 return false;
             }
-            else if (!int.TryParse(ToPlanMinute.Text, out int timeToMinute))
+            if (!int.TryParse(ToPlanMinute.Text, out int timeToMinute))
             {
-                MessageBox.Show("selected time is not correct>");
+                MessageBox.Show("time must be a number");
                 return false;
             }
+
+            // validate hours and minutes
+
+            //string pattern = @"([0-9]{0,2}\:[0-9]{0,2})";
+
+            /*
             else if (!Regex.IsMatch(string.Format("{0}:{1}", timeFrom, timeFromMinute), pattern))
             {
                 MessageBox.Show("selected time is not correct>");
@@ -114,6 +121,26 @@ namespace ECBMeetingReservations
                 MessageBox.Show("selected time is not correct>");
                 return false;
             }
+            */
+
+            string format = "HH:mm";
+
+            string dateFrom = string.Format("{0}:{1}", TimeFromHour, timeFromMinute);
+
+            if (!DateTime.TryParseExact(dateFrom, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTimeFrom))
+            {
+                MessageBox.Show("Please put correct hour and minute!");
+                return false;
+            }
+
+            string dateTo = string.Format("{0}:{1}", timeTohour, timeToMinute);
+
+            if (!DateTime.TryParseExact(dateTo, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTimeTo))
+            {
+                MessageBox.Show("Please put correct hour and minute!");
+                return false;
+            }
+
             else if (!int.TryParse(ExpectedPersonsTextBox.Text, out int persons))
             {
                 MessageBox.Show("Expected persons must be a number!");
@@ -139,7 +166,6 @@ namespace ECBMeetingReservations
                 return true;
             }
         }
-
 
     }
 }

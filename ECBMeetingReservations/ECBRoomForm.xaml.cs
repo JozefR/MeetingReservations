@@ -20,9 +20,7 @@ namespace ECBMeetingReservations
             InitializeComponent();
         }
 
-
         // Handle the input data from user
-
 
         private void okBtn_Click(object sender, RoutedEventArgs e)
         {

@@ -15,6 +15,7 @@ namespace ECBMeetingReservations
     {
         private MeetingCentre _meetingCentreModel = null;
         private MeetingRoom _roomModel = null;
+
         public ListBox RefreshCentres { get; set; }
         public ListBox RefreshRooms { get; set; }
 
@@ -78,41 +79,6 @@ namespace ECBMeetingReservations
             }
         }
  
-        /// <summary>
-        /// Show centre entities in listbox and combobox.
-        /// </summary>
-        private void showCentresInListBox()
-        {
-            meetingCentresListBox.ItemsSource = DataManager.Centres;
-            MeetingCentreCombo.ItemsSource = DataManager.Centres;
-
-        }
-
-        /// <summary>
-        /// Show all rooms in selected center.
-        /// </summary>
-        private void showRoomsInComboBox()
-        {
-            var item = MeetingCentreCombo.SelectedItem;
-
-            var rooms = new ObservableCollection<MeetingRoom>();
-
-            foreach (var centre in DataManager.Centres)
-            {
-                if (centre == item)
-                {
-                    rooms = centre.MeetingRooms;
-                }
-            }
-
-            MeetingRoomCombo.ItemsSource = rooms;
-        }
-
-        private void MeetingCentreCombo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            showRoomsInComboBox();
-        }
-
         // 4. Show Centre rooms in listBox.
 
         private void meetingCentresListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -140,23 +106,6 @@ namespace ECBMeetingReservations
             }
 
             meetingRoomsListBox.ItemsSource = rooms;
-        }
-
-        private void showReservationsInListBox()
-        {
-            var item = MeetingRoomCombo.SelectedItem;
-
-            var reservations = new ObservableCollection<MeetingReservation>();
-
-            foreach (var room in DataManager.Rooms)
-            {
-                if (room == item)
-                {
-                    reservations = room.MeetingReservations;
-                }
-            }
-
-            MeetingsListBox.ItemsSource = reservations;
         }
 
         // 5. Create new Meeting centre 
@@ -255,6 +204,10 @@ namespace ECBMeetingReservations
             }
         }
 
+        //////////////////////////////////druhy ukol
+        ////////////////////////////////////////////
+
+
         /// <summary>
         /// Create new Meeting Planning Reservation
         /// </summary>
@@ -295,5 +248,63 @@ namespace ECBMeetingReservations
         }
 
 
+        /// <summary>
+        /// Show all rooms in selected center.
+        /// </summary>
+        private void showRoomsInComboBox()
+        {
+            var item = MeetingCentreCombo.SelectedItem;
+
+            var rooms = new ObservableCollection<MeetingRoom>();
+
+            foreach (var centre in DataManager.Centres)
+            {
+                if (centre == item)
+                {
+                    rooms = centre.MeetingRooms;
+                }
+            }
+
+            MeetingRoomCombo.ItemsSource = rooms;
+        }
+
+        private void MeetingCentreCombo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            showRoomsInComboBox();
+        }
+
+        /// <summary>
+        /// Show centre entities in listbox and combobox.
+        /// </summary>
+        private void showCentresInListBox()
+        {
+            meetingCentresListBox.ItemsSource = DataManager.Centres;
+            MeetingCentreCombo.ItemsSource = DataManager.Centres;
+
+        }
+
+        private void showReservationsInListBox()
+        {
+            var item = MeetingRoomCombo.SelectedItem;
+            var reservations = new ObservableCollection<MeetingReservation>();
+
+            foreach (var room in DataManager.Rooms)
+            {
+                foreach (var reservation in room.MeetingReservations)
+                {
+                    if (room == item)
+                    {
+                        if (ReservationDatePicker.SelectedDate == reservation.Date)
+                            reservations = room.MeetingReservations;
+                    }
+                }
+            }
+            MeetingsListBox.ItemsSource = reservations;
+        }
+
+
+        private void MeetingsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
     }
 }

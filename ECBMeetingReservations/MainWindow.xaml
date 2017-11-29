@@ -118,7 +118,7 @@
                 <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281" SelectedDateChanged="ReservationDatePicker_SelectedDateChanged"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings"/><LineBreak/><Run/></TextBlock>
 
-                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281" >
+                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281" SelectionChanged="MeetingsListBox_SelectionChanged" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">
@@ -131,25 +131,23 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-
-
                 <Button x:Name="NewPlanningButton" Content="New" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="75" Click="NewPlanningButton_Click"/>
                 <Button x:Name="EditPlanningButton" Content="Edit" HorizontalAlignment="Left" Margin="90,377,0,0" VerticalAlignment="Top" Width="75"/>
                 <Button x:Name="DeletePlanningButton" Content="Delete" HorizontalAlignment="Left" Margin="216,377,0,0" VerticalAlignment="Top" Width="75"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings Details"/><LineBreak/><Run/></TextBlock>
                 <TextBlock HorizontalAlignment="Left" Margin="10,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="From"/>
                 <TextBlock HorizontalAlignment="Left" Margin="50,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="To"/>
-                <TextBox x:Name="FromDateHour" HorizontalAlignment="Left" Height="23" Margin="5,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
-                <TextBox x:Name="FromDateMinute" HorizontalAlignment="Left" Height="23" Margin="50,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
-                <TextBox x:Name="ToDateHour" HorizontalAlignment="Left" Height="23" Margin="125,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
-                <TextBox x:Name="ToDateMinute"  HorizontalAlignment="Left" Height="23" Margin="170,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="FromDateHour" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeFromHour, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="FromDateMinute" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeFromMinute, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="50,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="ToDateHour" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeToHour, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="125,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="ToDateMinute" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeToMinute, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="170,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Expected persons count"/><LineBreak/><Run/></TextBlock>
-                <TextBox x:Name="PersonsCountTextBox" HorizontalAlignment="Left" Height="23" Margin="5,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <TextBox x:Name="PersonsCountTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.ExpectedPersonsCount, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,533,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Text="Customer"/>
-                <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Height="23" Margin="5,558,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-                <CheckBox x:Name="VideoCheckBox" Content="Video Conference" HorizontalAlignment="Left" Margin="5,586,0,0" VerticalAlignment="Top" Height="20" Width="200"/>
+                <TextBox x:Name="CustomerTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.Customer, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,558,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
+                <CheckBox x:Name="VideoCheckBox" IsChecked="{Binding ElementName=MeetingsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" Content="Video Conference" HorizontalAlignment="Left" Margin="5,586,0,0" VerticalAlignment="Top" Height="20" Width="200"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5,606,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Text="Note" Width="40"/>
-                <TextBox x:Name="NoteTextBox" HorizontalAlignment="Left" Height="68" Margin="5,624,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <TextBox x:Name="NoteTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.Note, Mode=OneWay}" HorizontalAlignment="Left" Height="68" Margin="5,624,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
             </Grid>
         </TabItem>
     </TabControl>
