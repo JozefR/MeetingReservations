@@ -8,6 +8,10 @@ namespace DataRepository
     {
         private static MeetingReservation _meetingReservation = new MeetingReservation();
 
+        /// <summary>
+        /// Load data from xml after starting the application
+        /// </summary>
+        /// <param name="path"></param>
         public static void LoadXML(string path)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -29,6 +33,11 @@ namespace DataRepository
             }
         }
 
+        /// <summary>
+        /// Validate the correct room to add the reservation
+        /// </summary>
+        /// <param name="meetingReservation"></param>
+        /// <param name="roomName"></param>
         private static void assingEachReservationToCorrectRoom(MeetingReservation meetingReservation, string roomName)
         {
             foreach (var room in DataManager.Rooms)

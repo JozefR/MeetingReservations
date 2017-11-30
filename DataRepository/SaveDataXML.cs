@@ -5,6 +5,9 @@ namespace DataRepository
 {
     public static class SaveDataXML
     {
+        /// <summary>
+        /// Write reservations data to xml file
+        /// </summary>
         public static void WriteXML()
         {
             using (XmlWriter writer = XmlWriter.Create(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\DataRepository\Reservations.xml"))
