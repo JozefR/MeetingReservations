@@ -14,6 +14,11 @@ namespace Models
         public bool VideoConference { get; set; }
         public string Note { get; set; }
 
+        public MeetingReservation()
+        {
+
+        }
+
         public string GetFullName
         {
             get

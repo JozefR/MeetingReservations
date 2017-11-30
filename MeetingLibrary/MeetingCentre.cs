@@ -8,6 +8,11 @@ namespace Models
     {
         public ObservableCollection<MeetingRoom> MeetingRooms { get; set; }
 
+        public MeetingCentre()
+        {
+
+        }
+
         public MeetingCentre(string name, string code, string description)
         {
             Name = name;

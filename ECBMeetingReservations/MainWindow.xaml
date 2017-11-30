@@ -21,7 +21,6 @@
 
                 <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2">
                     <MenuItem Header="File" Height="17" Width="146">
-                        <MenuItem x:Name="importDataBtn" Header="Import Data" HorizontalAlignment="Left" Height="20" Width="152" Margin="0,0,-12,0" Click="importDataBtn_Click"/>
                         <MenuItem x:Name="saveDataBtn" Header="Save" HorizontalAlignment="Left" Height="20" Width="140" Click="saveDataBtn_Click"/>
                         <MenuItem x:Name="exitDataBtn" Header="Exit" HorizontalAlignment="Left" Height="20" Width="140" Click="exitDataBtn_Click"/>
                     </MenuItem>
@@ -82,19 +81,31 @@
             </Grid>
         </TabItem>
         <TabItem Header="TabItem">
+
             <Grid Background="#FFE5E5E5" Margin="0,0,-18,-111" Height="703" VerticalAlignment="Top">
+
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="11*"></ColumnDefinition>
+                    <ColumnDefinition Width="19*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings Planning"/><LineBreak/><Run/></TextBlock>
+
+                <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2">
+                    <MenuItem Header="File" Height="17" Width="146">
+                        <MenuItem x:Name="saveDataReserBtn" Header="Save" HorizontalAlignment="Left" Height="20" Width="140" Click="saveDataReserBtn_Click"/>
+                        <MenuItem x:Name="exitDataReserBtn" Header="Exit" HorizontalAlignment="Left" Height="20" Width="140" Click="exitDataReserBtn_Click"/>
+                    </MenuItem>
+                </Menu>
+
+
+                <TextBlock HorizontalAlignment="Left" Margin="170,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2"><Run Text="Meetings Planning"/><LineBreak/><Run/></TextBlock>
                 <TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meeting Centre"/><LineBreak/><Run/></TextBlock>
                 <TextBlock HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meeting Room"/><LineBreak/><Run/></TextBlock>
 
-                <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,56,0,0" x:Name="MeetingCentreCombo" VerticalAlignment="Top" Width="281" BorderBrush="Black" IsEditable="True" TextSearch.TextPath="GetFullName" SelectionChanged="MeetingCentreCombo_SelectionChanged" >
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,56,0,0" x:Name="MeetingCentreCombo" VerticalAlignment="Top" Width="281" BorderBrush="Black" IsEditable="True" TextSearch.TextPath="GetFullName" SelectionChanged="MeetingCentreCombo_SelectionChanged" Grid.ColumnSpan="2" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -104,7 +115,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,115,0,0" x:Name="MeetingRoomCombo" VerticalAlignment="Top" Width="281" BorderBrush="Black" IsEditable="True" TextSearch.TextPath="GetFullName" >
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,115,0,0" x:Name="MeetingRoomCombo" VerticalAlignment="Top" Width="281" BorderBrush="Black" IsEditable="True" TextSearch.TextPath="GetFullName" Grid.ColumnSpan="2" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -115,10 +126,10 @@
                 </ComboBox>
 
                 <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Date"/><LineBreak/><Run/></TextBlock>
-                <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281" SelectedDateChanged="ReservationDatePicker_SelectedDateChanged"/>
+                <DatePicker x:Name="ReservationDatePicker" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="281" SelectedDateChanged="ReservationDatePicker_SelectedDateChanged" Grid.ColumnSpan="2"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings"/><LineBreak/><Run/></TextBlock>
 
-                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281" SelectionChanged="MeetingsListBox_SelectionChanged" >
+                <ListBox x:Name="MeetingsListBox" HorizontalAlignment="Left" Height="151" Margin="10,221,0,0" VerticalAlignment="Top" Width="281" SelectionChanged="MeetingsListBox_SelectionChanged" Grid.ColumnSpan="2" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">
@@ -133,21 +144,21 @@
 
                 <Button x:Name="NewPlanningButton" Content="New" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="75" Click="NewPlanningButton_Click"/>
                 <Button x:Name="EditPlanningButton" Content="Edit" HorizontalAlignment="Left" Margin="90,377,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="DeletePlanningButton" Content="Delete" HorizontalAlignment="Left" Margin="216,377,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="DeletePlanningButton" Content="Delete" HorizontalAlignment="Left" Margin="18,377,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Meetings Details"/><LineBreak/><Run/></TextBlock>
                 <TextBlock HorizontalAlignment="Left" Margin="10,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="From"/>
                 <TextBlock HorizontalAlignment="Left" Margin="50,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="35" Text="To"/>
                 <TextBox x:Name="FromDateHour" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeFromHour, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
                 <TextBox x:Name="FromDateMinute" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeFromMinute, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="50,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
                 <TextBox x:Name="ToDateHour" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeToHour, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="125,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
-                <TextBox x:Name="ToDateMinute" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeToMinute, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="170,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40"/>
+                <TextBox x:Name="ToDateMinute" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.GetTimeToMinute, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="170,452,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40" Grid.ColumnSpan="2"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Text="Expected persons count"/><LineBreak/><Run/></TextBlock>
-                <TextBox x:Name="PersonsCountTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.ExpectedPersonsCount, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <TextBox x:Name="PersonsCountTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.ExpectedPersonsCount, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.ColumnSpan="2"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,533,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Text="Customer"/>
-                <TextBox x:Name="CustomerTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.Customer, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,558,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-                <CheckBox x:Name="VideoCheckBox" IsChecked="{Binding ElementName=MeetingsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" Content="Video Conference" HorizontalAlignment="Left" Margin="5,586,0,0" VerticalAlignment="Top" Height="20" Width="200"/>
+                <TextBox x:Name="CustomerTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.Customer, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="5,558,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" Grid.ColumnSpan="2"/>
+                <CheckBox x:Name="VideoCheckBox" IsChecked="{Binding ElementName=MeetingsListBox, Path=SelectedValue.VideoConference, Mode=OneWay}" Content="Video Conference" HorizontalAlignment="Left" Margin="5,586,0,0" VerticalAlignment="Top" Height="20" Width="200" Grid.ColumnSpan="2"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5,606,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Text="Note" Width="40"/>
-                <TextBox x:Name="NoteTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.Note, Mode=OneWay}" HorizontalAlignment="Left" Height="68" Margin="5,624,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <TextBox x:Name="NoteTextBox" Text="{Binding ElementName=MeetingsListBox, Path=SelectedValue.Note, Mode=OneWay}" HorizontalAlignment="Left" Height="68" Margin="5,624,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.ColumnSpan="2"/>
             </Grid>
         </TabItem>
     </TabControl>

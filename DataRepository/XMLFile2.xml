@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reservation>
+  <MeetingRoomName>sda</MeetingRoomName>
+  <Customer>Jozo</Customer>
+  <Date>30.11.2017 0:00:00</Date>
+  <TimeFrom>12:12:00</TimeFrom>
+  <TimeTo>21:12:00</TimeTo>
+  <ExpectedPersons>12</ExpectedPersons>
+  <VideoConference>True</VideoConference>
+  <Note>sth</Note>
+</Reservation>

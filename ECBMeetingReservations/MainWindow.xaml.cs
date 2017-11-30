@@ -204,6 +204,7 @@ namespace ECBMeetingReservations
             }
         }
 
+        ////////////////////////////////////////////
         //////////////////////////////////druhy ukol
         ////////////////////////////////////////////
 
@@ -283,6 +284,9 @@ namespace ECBMeetingReservations
 
         }
 
+        /// <summary>
+        /// Show reservations in list box
+        /// </summary>
         private void showReservationsInListBox()
         {
             var item = MeetingRoomCombo.SelectedItem;
@@ -305,6 +309,21 @@ namespace ECBMeetingReservations
 
         private void MeetingsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+        }
+
+        /// <summary>
+        /// Save meetings to xml file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveDataReserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDataXML.WriteXML();
+        }
+
+        private void exitDataReserBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

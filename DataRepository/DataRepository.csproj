@@ -45,12 +45,16 @@
     <Compile Include="LoadData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveData.cs" />
+    <Compile Include="SaveDataXML.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetingLibrary\Models.csproj">
       <Project>{66adf455-2300-4840-8b2e-accf3cfbc1ef}</Project>
       <Name>Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XMLFile2.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,7 +10,10 @@ namespace Models
         public MeetingCentre MeetingCentre { get; set; }
         public ObservableCollection<MeetingReservation> MeetingReservations { get; set; }
 
+        public MeetingRoom()
+        {
 
+        }
 
         public MeetingRoom(string name, string code, string description, int capacity, string video, MeetingCentre meetingCentreModel)
         {
