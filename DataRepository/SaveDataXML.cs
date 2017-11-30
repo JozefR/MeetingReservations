@@ -7,10 +7,10 @@ namespace DataRepository
     {
         public static void WriteXML()
         {
-
-            using (XmlWriter writer = XmlWriter.Create(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\DataRepository\XMLFile2.xml"))
+            using (XmlWriter writer = XmlWriter.Create(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\DataRepository\Reservations.xml"))
             {
                 writer.WriteStartDocument();
+                writer.WriteStartElement("Table");
 
                 foreach (var reservation in DataManager.Reservation)
                 {
@@ -23,6 +23,7 @@ namespace DataRepository
                     writer.WriteElementString("ExpectedPersons", reservation.ExpectedPersonsCount.ToString());
                     writer.WriteElementString("VideoConference", reservation.VideoConference.ToString());
                     writer.WriteElementString("Note", reservation.Note);
+                    writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
             }

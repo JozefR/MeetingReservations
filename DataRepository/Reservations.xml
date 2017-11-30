@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Table>
+  <Reservation>
+    <MeetingRoomName>sda</MeetingRoomName>
+    <Customer>Jozef</Customer>
+    <Date>30.11.2017 0:00:00</Date>
+    <TimeFrom>12:12:00</TimeFrom>
+    <TimeTo>12:12:00</TimeTo>
+    <ExpectedPersons>3</ExpectedPersons>
+    <VideoConference>True</VideoConference>
+    <Note>i dont know</Note>
+  </Reservation>
+  <Reservation>
+    <MeetingRoomName>sda</MeetingRoomName>
+    <Customer>dsfads</Customer>
+    <Date>28.11.2017 0:00:00</Date>
+    <TimeFrom>12:12:00</TimeFrom>
+    <TimeTo>12:12:00</TimeTo>
+    <ExpectedPersons>12</ExpectedPersons>
+    <VideoConference>True</VideoConference>
+    <Note>ads</Note>
+  </Reservation>
+</Table>

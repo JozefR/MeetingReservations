@@ -28,6 +28,7 @@ namespace ECBMeetingReservations
             else
             {
                 LoadData.LoadMeetingDataFromFile(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\MeetingLibrary\ExportData.csv");
+                LoadDataXML.LoadXML(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\DataRepository\Reservations.xml");
                 HandleState.FirstLoading();
             }
 
