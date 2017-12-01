@@ -15,6 +15,9 @@ namespace ECBMeetingReservations
     public partial class PlanningForm : Window
     {
         private MeetingReservation _meetingReservation = null;
+        private ComboBox _meetingCombo;
+        private DatePicker _reservationDatePicker;
+        private MainWindow _transferMain;
 
         public PlanningForm()
         {
@@ -23,9 +26,16 @@ namespace ECBMeetingReservations
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            _meetingReservation = new MeetingReservation();
+
+            //transfered properties
+            _meetingReservation.Date = (DateTime)_reservationDatePicker.SelectedDate;
+            _meetingReservation.MeetingRoom = (MeetingRoom)_meetingCombo.SelectedItem;
+
             if (PlanningFormValidation())
             {
-                NewInputFormOk();
+                createNewReservation();
+                HandleState.ChangingData();
                 this.Close();
             }
         }
@@ -36,31 +46,23 @@ namespace ECBMeetingReservations
         }
 
         /// <summary>
-        /// Data for planning input form from main window
+        /// Transfer comboBox and DatePicker data from MainWindow.
         /// </summary>
-        internal void NewInputForm(ComboBox meeetingCombo, DatePicker reservationDatePicker)
+        internal void TransferDataForReservation(ComboBox meeetingCombo, DatePicker reservationDatePicker)
         {
-            if (_meetingReservation == null)
-            {
-                _meetingReservation = new MeetingReservation();
-                _meetingReservation.Date = (DateTime)reservationDatePicker.SelectedDate;
-                _meetingReservation.MeetingRoom = (MeetingRoom)meeetingCombo.SelectedItem;
-            }
-            else
-            {
-                this.Close();
-            }
+            _meetingCombo = meeetingCombo;
+            _reservationDatePicker = reservationDatePicker;
         }
 
         /// <summary>
-        /// Create new planning after click on ok button
+        /// Create new reservation and add it to Datamanger.Reservations
         /// </summary>
-        /// <returns></returns>
-        private void NewInputFormOk()
+        private void createNewReservation()
         {
-            TimeSpan timeFrom = new TimeSpan(int.Parse(FromPlanHour.Text), int.Parse(FromPlanMinute.Text),0);
+            TimeSpan timeFrom = new TimeSpan(int.Parse(FromPlanHour.Text), int.Parse(FromPlanMinute.Text), 0);
             TimeSpan timeTo = new TimeSpan(int.Parse(ToPlanHour.Text), int.Parse(ToPlanMinute.Text), 0);
 
+ 
             _meetingReservation.TimeFrom = timeFrom;
             _meetingReservation.TimeTo = timeTo;
             _meetingReservation.ExpectedPersonsCount = int.Parse(ExpectedPersonsTextBox.Text);
@@ -68,6 +70,17 @@ namespace ECBMeetingReservations
             _meetingReservation.VideoConference = (bool)VideoCheckBox.IsChecked;
             _meetingReservation.Note = NoteTextBox.Text;
             DataManager.Reservation.Add(_meetingReservation);
+
+            assignReservationToCorrectRoom(_meetingReservation);
+        }
+
+        /// <summary>
+        /// Check if meetingReservation belong to correct room
+        /// </summary>
+        /// <param name="meetingReservation"></param>
+        private void assignReservationToCorrectRoom(MeetingReservation meetingReservation)
+        {
+
             foreach (var room in DataManager.Rooms)
             {
                 if (room == _meetingReservation.MeetingRoom)
@@ -164,6 +177,5 @@ namespace ECBMeetingReservations
                 return true;
             }
         }
-
     }
 }

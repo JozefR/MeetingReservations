@@ -6,7 +6,7 @@ namespace DataRepository
 {
     public static class LoadDataXML
     {
-        private static MeetingReservation _meetingReservation = new MeetingReservation();
+        private static MeetingReservation _meetingReservation;
 
         /// <summary>
         /// Load data from xml after starting the application
@@ -20,6 +20,7 @@ namespace DataRepository
 
             foreach (XmlNode node in nodeList)
             {
+                _meetingReservation = new MeetingReservation();
                 string roomName = node.SelectSingleNode("MeetingRoomName").InnerText;
                 _meetingReservation.Customer = node.SelectSingleNode("Customer").InnerText;
                 _meetingReservation.Date = DateTime.Parse(node.SelectSingleNode("Date").InnerText);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System;
 
 namespace ECBMeetingReservations
 {
@@ -37,6 +38,8 @@ namespace ECBMeetingReservations
             RefreshCentres = meetingCentresListBox;
             RefreshRooms = meetingRoomsListBox;
         }
+
+
 
         // 2. Menu nav with Import data, save, exit buttons
 
@@ -87,15 +90,9 @@ namespace ECBMeetingReservations
             showRoomsInListBox();
         }
 
-        private void ReservationDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            showReservationsInListBox();
-        }
-
         private void showRoomsInListBox()
         {
             var item = meetingCentresListBox.SelectedItem;
-
             var rooms = new ObservableCollection<MeetingRoom>();
 
             foreach (var centre in DataManager.Centres)
@@ -209,7 +206,6 @@ namespace ECBMeetingReservations
         //////////////////////////////////druhy ukol
         ////////////////////////////////////////////
 
-
         /// <summary>
         /// Create new Meeting Reservation
         /// </summary>
@@ -221,34 +217,9 @@ namespace ECBMeetingReservations
             {
                 PlanningForm planningForm = new PlanningForm();
                 planningForm.Show();
-                planningForm.NewInputForm(MeetingRoomCombo, ReservationDatePicker);
+                planningForm.TransferDataForReservation(MeetingRoomCombo, ReservationDatePicker);
             }
         }
-
-        /// <summary>
-        /// Validation for comboBox and DatePicker
-        /// </summary>
-        /// <param name="meetingCombo"></param>
-        /// <param name="reservationDatePicker"></param>
-        /// <returns></returns>
-        private bool listBoxDateValidation(ComboBox meetingCombo, DatePicker reservationDatePicker)
-        {
-            if (meetingCombo.SelectedItem == null)
-            {
-                MessageBox.Show("Please select room.");
-                return false;
-            }
-            else if (reservationDatePicker.SelectedDate == null)
-            {
-                MessageBox.Show("Please select some date.");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
 
         /// <summary>
         /// Show all rooms in selected center.
@@ -285,6 +256,11 @@ namespace ECBMeetingReservations
 
         }
 
+        private void ReservationDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            showReservationsInListBox();
+        }
+
         /// <summary>
         /// Show reservations in list box
         /// </summary>
@@ -300,13 +276,36 @@ namespace ECBMeetingReservations
                     if (room == item)
                     {
                         if (ReservationDatePicker.SelectedDate == reservation.Date)
-                            reservations = room.MeetingReservations;
+                            reservations.Add(reservation);
                     }
                 }
             }
             MeetingsListBox.ItemsSource = reservations;
         }
 
+        /// <summary>
+        /// Validation for comboBox and DatePicker
+        /// </summary>
+        /// <param name="meetingCombo"></param>
+        /// <param name="reservationDatePicker"></param>
+        /// <returns></returns>
+        private bool listBoxDateValidation(ComboBox meetingCombo, DatePicker reservationDatePicker)
+        {
+            if (meetingCombo.SelectedItem == null)
+            {
+                MessageBox.Show("Please select room.");
+                return false;
+            }
+            else if (reservationDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Please select some date.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         private void MeetingsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -320,11 +319,29 @@ namespace ECBMeetingReservations
         private void saveDataReserBtn_Click(object sender, RoutedEventArgs e)
         {
             SaveDataXML.WriteXML();
+            HandleState.ChangingDataToFalse();
         }
 
         private void exitDataReserBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            // If data was already saved exit app if not pop up message.
+            if (HandleState.DataChanged)
+            {
+                if (MessageBox.Show("Do you really want to save all data?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
+                {
+                    SaveDataXML.WriteXML();
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

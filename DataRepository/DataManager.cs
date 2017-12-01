@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 
 namespace DataRepository
 {
@@ -17,5 +18,10 @@ namespace DataRepository
 
         public static ObservableCollection<MeetingReservation> Reservation { get; set; } =
             new ObservableCollection<MeetingReservation>();
+
+        public static void sort()
+        {
+            Reservation.OrderBy(r => r.GetTimeFromHour);
+        }
     }
 }
