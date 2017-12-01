@@ -18,6 +18,11 @@ namespace ECBMeetingReservations
         private ComboBox _meetingCombo;
         private DatePicker _reservationDatePicker;
 
+        private int _a1;
+        private int _a2;
+        private int _b1;
+        private int _b2;
+
         public PlanningForm()
         {
             InitializeComponent();
@@ -33,9 +38,11 @@ namespace ECBMeetingReservations
 
             if (PlanningFormValidation() && validateTime())
             {
-                createNewReservation();
-                HandleState.ChangingData();
-                this.Close();
+                if (createNewReservation()) 
+                {
+                    HandleState.ChangingData();
+                    this.Close();
+                }
             }
         }
 
@@ -56,22 +63,57 @@ namespace ECBMeetingReservations
         /// <summary>
         /// Create new reservation and add it to Datamanger.Reservations
         /// </summary>
-        private void createNewReservation()
+        private bool createNewReservation()
         {
+            _a1 = int.Parse(FromPlanHour.Text) * 60;
+            _a2 = int.Parse(FromPlanMinute.Text);
+            _b1 = int.Parse(ToPlanHour.Text) * 60;
+            _b2 = int.Parse(ToPlanMinute.Text);
+
             TimeSpan timeFrom = new TimeSpan(int.Parse(FromPlanHour.Text), int.Parse(FromPlanMinute.Text), 0);
             TimeSpan timeTo = new TimeSpan(int.Parse(ToPlanHour.Text), int.Parse(ToPlanMinute.Text), 0);
 
- 
             _meetingReservation.TimeFrom = timeFrom;
             _meetingReservation.TimeTo = timeTo;
             _meetingReservation.ExpectedPersonsCount = int.Parse(ExpectedPersonsTextBox.Text);
             _meetingReservation.Customer = CustomerTextBox.Text;
             _meetingReservation.VideoConference = (bool)VideoCheckBox.IsChecked;
             _meetingReservation.Note = NoteTextBox.Text;
-            DataManager.Reservation.Add(_meetingReservation);
 
-            assignReservationToCorrectRoom(_meetingReservation);
+            if (validateExistingReservations(_a1,_a2,_b1,_b2))
+            {
+                DataManager.Reservation.Add(_meetingReservation);
+                assignReservationToCorrectRoom(_meetingReservation);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("There is already reservation on that time!");
+                return false;
+            }
         }
+
+        private bool validateExistingReservations(int a1, int a2, int b1, int b2)
+        {
+            int lastTime = a1 + a2;
+
+            foreach (var reservation in DataManager.Reservation)
+            {
+                if (_meetingReservation.Date == reservation.Date)
+                {
+                    int fromHour = int.Parse(reservation.GetTimeToHour) * 60;
+                    int fromMinute = int.Parse(reservation.GetTimeToMinute);
+                    int fromTotal = fromHour + fromMinute;
+                    if (lastTime < fromTotal)
+                    {
+                        MessageBox.Show("Reservation cannot be earlier");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
 
         /// <summary>
         /// Check if meetingReservation belong to correct room
@@ -162,9 +204,15 @@ namespace ECBMeetingReservations
                 return false;
             }
 
-            if (timeTohour > 23)
+            if (timeTohour > 23 && timeTohour < TimeFromHour)
             {
                 MessageBox.Show("Invalid Hour Error");
+                return false;
+            }
+            if (timeTohour == TimeFromHour)
+                if (timeFromMinute >= timeToMinute)
+            {
+                MessageBox.Show("From time cannot be smaller as To time!");
                 return false;
             }
 

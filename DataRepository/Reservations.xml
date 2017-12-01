@@ -1,1 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Table><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>ddddd</Customer><Date>01.12.2017 0:00:00</Date><TimeFrom>13:13:00</TimeFrom><TimeTo>13:13:00</TimeTo><ExpectedPersons>13</ExpectedPersons><VideoConference>True</VideoConference><Note>   cdcdc</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>wwwwwwwwww</Customer><Date>02.12.2017 0:00:00</Date><TimeFrom>13:13:00</TimeFrom><TimeTo>13:13:00</TimeTo><ExpectedPersons>1</ExpectedPersons><VideoConference>True</VideoConference><Note>xxx</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>me</Customer><Date>03.12.2017 0:00:00</Date><TimeFrom>13:12:00</TimeFrom><TimeTo>11:12:00</TimeTo><ExpectedPersons>12</ExpectedPersons><VideoConference>True</VideoConference><Note>qqqq</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>fdsafadsf</Customer><Date>01.12.2017 0:00:00</Date><TimeFrom>13:13:00</TimeFrom><TimeTo>13:13:00</TimeTo><ExpectedPersons>12</ExpectedPersons><VideoConference>True</VideoConference><Note>dsafsdafsd</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>qqqqq</Customer><Date>04.12.2017 0:00:00</Date><TimeFrom>14:14:00</TimeFrom><TimeTo>14:14:00</TimeTo><ExpectedPersons>12</ExpectedPersons><VideoConference>True</VideoConference><Note>dsafdsafds</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>dasf</Customer><Date>02.12.2017 0:00:00</Date><TimeFrom>12:12:00</TimeFrom><TimeTo>12:12:00</TimeTo><ExpectedPersons>12</ExpectedPersons><VideoConference>True</VideoConference><Note>adsafs</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>DSFA</Customer><Date>02.12.2017 0:00:00</Date><TimeFrom>14:12:00</TimeFrom><TimeTo>15:12:00</TimeTo><ExpectedPersons>1</ExpectedPersons><VideoConference>True</VideoConference><Note>AAA</Note></Reservation><Reservation><MeetingRoomName>sda</MeetingRoomName><Customer>ewqrqew</Customer><Date>02.12.2017 0:00:00</Date><TimeFrom>11:12:00</TimeFrom><TimeTo>11:59:00</TimeTo><ExpectedPersons>1</ExpectedPersons><VideoConference>True</VideoConference><Note>ewqrqewr</Note></Reservation></Table>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Table>
+  <Reservation>
+    <MeetingRoomName>sda</MeetingRoomName>
+    <Customer>ddddd</Customer>
+    <Date>01.12.2017 0:00:00</Date>
+    <TimeFrom>02:40:00</TimeFrom>
+    <TimeTo>03:00:00</TimeTo>
+    <ExpectedPersons>13</ExpectedPersons>
+    <VideoConference>True</VideoConference>
+    <Note>   cdcdc</Note>
+  </Reservation>
+  <Reservation>
+    <MeetingRoomName>sda</MeetingRoomName>
+    <Customer>sda</Customer>
+    <Date>01.12.2017 0:00:00</Date>
+    <TimeFrom>03:01:00</TimeFrom>
+    <TimeTo>03:50:00</TimeTo>
+    <ExpectedPersons>1</ExpectedPersons>
+    <VideoConference>True</VideoConference>
+    <Note>asd</Note>
+  </Reservation>
+</Table>
