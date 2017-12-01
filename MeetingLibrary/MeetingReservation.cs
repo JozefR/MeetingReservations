@@ -23,7 +23,7 @@ namespace Models
         {
             get
             {
-                return string.Format("{0} {1}", Customer, TimeFrom);
+                return string.Format("{0} - {1} {2}", TimeFrom, TimeTo, Customer);
             }
         }
 

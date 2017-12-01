@@ -1,4 +1,5 @@
 ﻿using MeetingLibrary;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Models
@@ -8,7 +9,7 @@ namespace Models
         public int Capacity { get; set; }
         public string VideoConference { get; set; }
         public MeetingCentre MeetingCentre { get; set; }
-        public ObservableCollection<MeetingReservation> MeetingReservations { get; set; }
+        public List<MeetingReservation> MeetingReservations { get; set; }
 
         public MeetingRoom()
         {
@@ -23,7 +24,7 @@ namespace Models
             Capacity = capacity;
             VideoConference = video;
             MeetingCentre = meetingCentreModel;
-            MeetingReservations = new ObservableCollection<MeetingReservation>();
+            MeetingReservations = new List<MeetingReservation>();
         }
 
         public override string GetFullName

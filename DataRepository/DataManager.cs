@@ -21,7 +21,10 @@ namespace DataRepository
 
         public static void sort()
         {
-            Reservation.OrderBy(r => r.GetTimeFromHour);
+            foreach (var room in Rooms)
+            {
+                room.MeetingReservations = room.MeetingReservations.OrderByDescending(r => r.GetTimeFromHour).Reverse().ToList();
+            }
         }
     }
 }

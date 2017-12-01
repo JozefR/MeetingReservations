@@ -17,7 +17,6 @@ namespace ECBMeetingReservations
         private MeetingReservation _meetingReservation = null;
         private ComboBox _meetingCombo;
         private DatePicker _reservationDatePicker;
-        private MainWindow _transferMain;
 
         public PlanningForm()
         {
@@ -32,7 +31,7 @@ namespace ECBMeetingReservations
             _meetingReservation.Date = (DateTime)_reservationDatePicker.SelectedDate;
             _meetingReservation.MeetingRoom = (MeetingRoom)_meetingCombo.SelectedItem;
 
-            if (PlanningFormValidation())
+            if (PlanningFormValidation() && validateTime())
             {
                 createNewReservation();
                 HandleState.ChangingData();
@@ -96,63 +95,7 @@ namespace ECBMeetingReservations
         /// <returns></returns>
         private bool PlanningFormValidation()
         {
-            if (!int.TryParse(FromPlanHour.Text, out int TimeFromHour))
-            {
-                MessageBox.Show("Input time must be a number");
-                return false;
-            }
-            if (!int.TryParse(FromPlanMinute.Text, out int timeFromMinute))
-            {
-                MessageBox.Show("time must be a number");
-                return false;
-            }
-            if (!int.TryParse(ToPlanHour.Text, out int timeTohour))
-            {
-                MessageBox.Show("time must be a number");
-                return false;
-            }
-            if (!int.TryParse(ToPlanMinute.Text, out int timeToMinute))
-            {
-                MessageBox.Show("time must be a number");
-                return false;
-            }
-
-            // validate hours and minutes
-
-            //string pattern = @"([0-9]{0,2}\:[0-9]{0,2})";
-
-            /*
-            else if (!Regex.IsMatch(string.Format("{0}:{1}", timeFrom, timeFromMinute), pattern))
-            {
-                MessageBox.Show("selected time is not correct>");
-                return false;
-            }
-            else if (!Regex.IsMatch(string.Format("{0}:{1}", timeTohour, timeToMinute), pattern))
-            {
-                MessageBox.Show("selected time is not correct>");
-                return false;
-            }
-            */
-
-            string format = "HH:mm";
-
-            string dateFrom = string.Format("{0}:{1}", TimeFromHour, timeFromMinute);
-
-            if (!DateTime.TryParseExact(dateFrom, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTimeFrom))
-            {
-                MessageBox.Show("Please put correct hour and minute!");
-                return false;
-            }
-
-            string dateTo = string.Format("{0}:{1}", timeTohour, timeToMinute);
-
-            if (!DateTime.TryParseExact(dateTo, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTimeTo))
-            {
-                MessageBox.Show("Please put correct hour and minute!");
-                return false;
-            }
-
-            else if (!int.TryParse(ExpectedPersonsTextBox.Text, out int persons))
+            if (!int.TryParse(ExpectedPersonsTextBox.Text, out int persons))
             {
                 MessageBox.Show("Expected persons must be a number!");
                 return false;
@@ -176,6 +119,63 @@ namespace ECBMeetingReservations
             {
                 return true;
             }
+        }
+
+
+        /// <summary>
+        /// validate time
+        /// </summary>
+        /// <returns></returns>
+        private bool validateTime()
+        {
+            if (!int.TryParse(FromPlanHour.Text, out int TimeFromHour))
+            {
+                MessageBox.Show("Input time must be a number");
+                return false;
+            }
+            if (!int.TryParse(FromPlanMinute.Text, out int timeFromMinute))
+            {
+                MessageBox.Show("time must be a number");
+                return false;
+            }
+            if (!int.TryParse(ToPlanHour.Text, out int timeTohour))
+            {
+                MessageBox.Show("time must be a number");
+                return false;
+            }
+            if (!int.TryParse(ToPlanMinute.Text, out int timeToMinute))
+            {
+                MessageBox.Show("time must be a number");
+                return false;
+            }
+
+            if (TimeFromHour > 23)
+            {
+                MessageBox.Show("Invalid Hour Error");
+                return false;
+            }
+
+            // Minutes should be less than 60
+            if (timeFromMinute > 59)
+            {
+                MessageBox.Show("Invalid Minute Error");
+                return false;
+            }
+
+            if (timeTohour > 23)
+            {
+                MessageBox.Show("Invalid Hour Error");
+                return false;
+            }
+
+            // Minutes should be less than 60
+            if (timeToMinute > 59)
+            {
+                MessageBox.Show("Invalid Minute Error");
+                return false;
+            }
+
+            return true;
         }
     }
 }

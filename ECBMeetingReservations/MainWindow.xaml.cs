@@ -266,6 +266,7 @@ namespace ECBMeetingReservations
         /// </summary>
         private void showReservationsInListBox()
         {
+            DataManager.sort();
             var item = MeetingRoomCombo.SelectedItem;
             var reservations = new ObservableCollection<MeetingReservation>();
 
