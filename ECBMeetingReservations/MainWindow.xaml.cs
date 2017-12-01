@@ -211,7 +211,7 @@ namespace ECBMeetingReservations
 
 
         /// <summary>
-        /// Create new Meeting Planning Reservation
+        /// Create new Meeting Reservation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

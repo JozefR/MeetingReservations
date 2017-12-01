@@ -83,8 +83,6 @@ namespace ECBMeetingReservations
         /// <returns></returns>
         private bool PlanningFormValidation()
         {
-
-
             if (!int.TryParse(FromPlanHour.Text, out int TimeFromHour))
             {
                 MessageBox.Show("Input time must be a number");

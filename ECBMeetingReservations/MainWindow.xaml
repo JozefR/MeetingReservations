@@ -21,6 +21,7 @@
 
                 <Menu HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.519,0.599" Grid.ColumnSpan="2">
                     <MenuItem Header="File" Height="17" Width="146">
+                        <MenuItem x:Name="importDataBtn" Header="Import Data" HorizontalAlignment="Left" Height="20" Width="152" Margin="0,0,-12,0" Click="importDataBtn_Click"/>
                         <MenuItem x:Name="saveDataBtn" Header="Save" HorizontalAlignment="Left" Height="20" Width="140" Click="saveDataBtn_Click"/>
                         <MenuItem x:Name="exitDataBtn" Header="Exit" HorizontalAlignment="Left" Height="20" Width="140" Click="exitDataBtn_Click"/>
                     </MenuItem>
