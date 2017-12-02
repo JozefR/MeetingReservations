@@ -32,12 +32,22 @@
   </Reservation>
   <Reservation>
     <MeetingRoomName>sda</MeetingRoomName>
-    <Customer>dfas</Customer>
-    <Date>01.12.2017 0:00:00</Date>
-    <TimeFrom>02:00:00</TimeFrom>
-    <TimeTo>02:10:00</TimeTo>
-    <ExpectedPersons>1</ExpectedPersons>
+    <Customer>we</Customer>
+    <Date>02.12.2017 0:00:00</Date>
+    <TimeFrom>12:13:00</TimeFrom>
+    <TimeTo>21:12:00</TimeTo>
+    <ExpectedPersons>13</ExpectedPersons>
     <VideoConference>True</VideoConference>
-    <Note>cxzvzcxv</Note>
+    <Note>qew</Note>
+  </Reservation>
+  <Reservation>
+    <MeetingRoomName>0.1 Edison</MeetingRoomName>
+    <Customer>ideee</Customer>
+    <Date>01.12.2017 0:00:00</Date>
+    <TimeFrom>01:01:00</TimeFrom>
+    <TimeTo>01:02:00</TimeTo>
+    <ExpectedPersons>12</ExpectedPersons>
+    <VideoConference>True</VideoConference>
+    <Note>ide</Note>
   </Reservation>
 </Table>

@@ -16,6 +16,7 @@ namespace ECBMeetingReservations
     {
         private MeetingCentre _meetingCentreModel = null;
         private MeetingRoom _roomModel = null;
+        private MeetingReservation _reservation = null;
 
         public ListBox RefreshCentres { get; set; }
         public ListBox RefreshRooms { get; set; }
@@ -221,6 +222,22 @@ namespace ECBMeetingReservations
             }
         }
 
+
+        private void EditPlanningButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+                if (ReservationsListBox.SelectedItem != null)
+                {
+                    _reservation = ReservationsListBox.SelectedItem as MeetingReservation;
+                    PlanningForm planningForm = new PlanningForm();
+                    planningForm.reservationForEdit(_reservation);
+                    planningForm.TransferDataForReservation(MeetingRoomCombo, ReservationDatePicker);
+                    planningForm.Show();
+                }
+                
+        }
+
+
         /// <summary>
         /// Show all rooms in selected center.
         /// </summary>
@@ -264,7 +281,7 @@ namespace ECBMeetingReservations
         /// <summary>
         /// Show reservations in list box
         /// </summary>
-        private void showReservationsInListBox()
+        public void showReservationsInListBox()
         {
             DataManager.sort();
             var item = MeetingRoomCombo.SelectedItem;
@@ -281,7 +298,7 @@ namespace ECBMeetingReservations
                     }
                 }
             }
-            MeetingsListBox.ItemsSource = reservations;
+            ReservationsListBox.ItemsSource = reservations;
         }
 
         /// <summary>
@@ -308,7 +325,7 @@ namespace ECBMeetingReservations
             }
         }
 
-        private void MeetingsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ReservationsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
 
@@ -343,6 +360,41 @@ namespace ECBMeetingReservations
             {
                 this.Close();
             }
+        }
+
+        /// <summary>
+        /// Delete Reservation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeletePlanningButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReservationsListBox.SelectedItem != null)
+            {
+                if (MessageBox.Show("Do you really want to delete selected reservation?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question)
+                  == MessageBoxResult.Yes)
+                {
+                    foreach (var room in DataManager.Rooms)
+                    {
+                        foreach (var reservation in room.MeetingReservations)
+                        {
+                            if (reservation == ReservationsListBox.SelectedItem)
+                            {
+                                room.MeetingReservations.Remove(reservation);
+                                DataManager.Reservation.Remove(reservation);
+                                HandleState.ChangingData();
+                                showReservationsInListBox();
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

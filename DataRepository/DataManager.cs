@@ -23,7 +23,7 @@ namespace DataRepository
         {
             foreach (var room in Rooms)
             {
-                room.MeetingReservations = room.MeetingReservations.OrderByDescending(r => r.GetTimeFromHour).Reverse().ToList();
+                room.MeetingReservations = room.MeetingReservations.OrderByDescending(r => r.TimeFrom).Reverse().ToList();
             }
         }
     }
