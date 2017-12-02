@@ -38,7 +38,7 @@ namespace ECBMeetingReservations
 
             if (PlanningFormValidation() && validateTime())
             {
-                if (createNewReservation()) 
+                if (transformDataFromUI()) 
                 {
                     HandleState.ChangingData();
                     this.Close();
@@ -63,13 +63,11 @@ namespace ECBMeetingReservations
         /// <summary>
         /// Create new reservation and add it to Datamanger.Reservations
         /// </summary>
-        private bool createNewReservation()
+        private bool transformDataFromUI()
         {
-            _a1 = int.Parse(FromPlanHour.Text) * 60;
-            _a2 = int.Parse(FromPlanMinute.Text);
-            _b1 = int.Parse(ToPlanHour.Text) * 60;
-            _b2 = int.Parse(ToPlanMinute.Text);
-
+            _a1 = int.Parse(FromPlanHour.Text) * 60 + int.Parse(FromPlanMinute.Text);
+            _a2 = int.Parse(ToPlanHour.Text) * 60 + int.Parse(ToPlanMinute.Text);
+            
             TimeSpan timeFrom = new TimeSpan(int.Parse(FromPlanHour.Text), int.Parse(FromPlanMinute.Text), 0);
             TimeSpan timeTo = new TimeSpan(int.Parse(ToPlanHour.Text), int.Parse(ToPlanMinute.Text), 0);
 
@@ -80,7 +78,19 @@ namespace ECBMeetingReservations
             _meetingReservation.VideoConference = (bool)VideoCheckBox.IsChecked;
             _meetingReservation.Note = NoteTextBox.Text;
 
-            if (validateExistingReservations(_a1,_a2,_b1,_b2))
+            if (createNewReservation())
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Handle new reservation
+        /// </summary>
+        /// <returns></returns>
+        private bool createNewReservation()
+        {
+            if (validateExistingReservations(_a1, _a2))
             {
                 DataManager.Reservation.Add(_meetingReservation);
                 assignReservationToCorrectRoom(_meetingReservation);
@@ -93,27 +103,32 @@ namespace ECBMeetingReservations
             }
         }
 
-        private bool validateExistingReservations(int a1, int a2, int b1, int b2)
+        /// <summary>
+        /// Validate time of existing reservations.
+        /// </summary>
+        /// <param name="a1"></param>
+        /// <param name="a2"></param>
+        /// <returns></returns>
+        private bool validateExistingReservations(int a1, int a2)
         {
-            int lastTime = a1 + a2;
-
             foreach (var reservation in DataManager.Reservation)
             {
                 if (_meetingReservation.Date == reservation.Date)
                 {
-                    int fromHour = int.Parse(reservation.GetTimeToHour) * 60;
-                    int fromMinute = int.Parse(reservation.GetTimeToMinute);
-                    int fromTotal = fromHour + fromMinute;
-                    if (lastTime < fromTotal)
+                    _b1 = int.Parse(reservation.GetTimeFromHour) * 60 + int.Parse(reservation.GetTimeFromMinute);
+                    _b2 = int.Parse(reservation.GetTimeToHour) * 60 + int.Parse(reservation.GetTimeToMinute);
+                    
+
+                    if (((_a1 <= _b1) && (_b1 <= _a2)) ||
+                            (_a1 <= _b2) && (_b2 <= _a1) ||
+                            (_b1 <= _a1) && (_b2 >= _a2))
                     {
-                        MessageBox.Show("Reservation cannot be earlier");
                         return false;
                     }
                 }
             }
             return true;
         }
-
 
         /// <summary>
         /// Check if meetingReservation belong to correct room
@@ -165,7 +180,7 @@ namespace ECBMeetingReservations
 
 
         /// <summary>
-        /// validate time
+        /// validate input time
         /// </summary>
         /// <returns></returns>
         private bool validateTime()
