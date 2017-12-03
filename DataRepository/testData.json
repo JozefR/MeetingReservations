@@ -1,0 +1,74 @@
+﻿{
+  "schema": "PLUS4U.EBC.MCS.MeetingRoom_Schedule_1.0",
+  "uri": "ues:UCL-BT:UCL.INF/DEMO_REZERVACE:EBC.MCS.DEMO/MR001/SCHEDULE",
+  "data": [
+    {
+      "meetingCentre": "EBC-MC_C7",
+      "meetingRoom": "EBC-C7-MR:1_1",
+      "reservations": {
+        "28.10.2016": [
+          {
+            "from": "10:00",
+            "to": "11:30",
+            "expectedPersonsCount": 4,
+            "customer": "Unicorn College",
+            "videoConference": false,
+            "note": ""
+          },
+          {
+            "from": "12:00",
+            "to": "13:30",
+            "expectedPersonsCount": 4,
+            "customer": "Unicorn College",
+            "videoConference": false,
+            "note": ""
+          }
+        ],
+        "29.10.2016": [
+          {
+            "from": "10:00",
+            "to": "11:30",
+            "expectedPersonsCount": 4,
+            "customer": "Unicorn College",
+            "videoConference": false,
+            "note": ""
+          }
+        ]
+      }
+    },
+    {
+      "meetingCentre": "EBC-MC_PAR",
+      "meetingRoom": "EBC-PAR-MR:0_1",
+      "reservations": {
+        "28.10.2016": [
+          {
+            "from": "10:00",
+            "to": "11:30",
+            "expectedPersonsCount": 20,
+            "customer": "Unicorn College",
+            "videoConference": false,
+            "note": ""
+          },
+          {
+            "from": "12:00",
+            "to": "13:30",
+            "expectedPersonsCount": 20,
+            "customer": "Unicorn College",
+            "videoConference": false,
+            "note": ""
+          }
+        ],
+        "30.10.2016": [
+          {
+            "from": "10:00",
+            "to": "11:30",
+            "expectedPersonsCount": 25,
+            "customer": "Unicorn College",
+            "videoConference": false,
+            "note": "Poznamka..."
+          }
+        ]
+      }
+    }
+  ]
+}

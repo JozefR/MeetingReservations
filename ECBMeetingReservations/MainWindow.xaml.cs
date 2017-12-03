@@ -394,7 +394,8 @@ namespace ECBMeetingReservations
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            ExportDataJson exportData = new ExportDataJson();
+            exportData.Show();
         }
     }
 }

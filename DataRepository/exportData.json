@@ -1,0 +1,52 @@
+{
+  "schema": "PLUS4U.EBC.MCS.MeetingRoom_Schedule_1.0",
+  "uri": "ues:UCL-BT:UCL.INF/DEMO_REZERVACE:EBC.MCS.DEMO/MR001/SCHEDULE",
+  "data": [
+    {
+      "meetingCentre:": "EBC Brno EBC-MC_BRNO",
+      "meetingRoom:": "sda AS",
+      "reservations": {
+        "01.12.2017": [
+          {
+            "from": "02:40:00",
+            "to": "03:00:00",
+            "expectedPersonsCount": 13,
+            "customer": "ddddd",
+            "videoConference": true,
+            "note": "   cdcdc"
+          }
+        ],
+        "01.12.2017": [
+          {
+            "from": "03:01:00",
+            "to": "03:50:00",
+            "expectedPersonsCount": 1,
+            "customer": "sda",
+            "videoConference": true,
+            "note": "asd"
+          }
+        ],
+        "02.12.2017": [
+          {
+            "from": "12:13:00",
+            "to": "21:12:00",
+            "expectedPersonsCount": 13,
+            "customer": "we",
+            "videoConference": true,
+            "note": "qew"
+          }
+        ],
+        "01.12.2017": [
+          {
+            "from": "03:53:00",
+            "to": "03:54:00",
+            "expectedPersonsCount": 1,
+            "customer": "cxvzcx",
+            "videoConference": true,
+            "note": "cxzvzcxv"
+          }
+        ]
+      }
+    }
+  ]
+}

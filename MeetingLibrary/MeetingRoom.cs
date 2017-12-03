@@ -1,4 +1,5 @@
 ﻿using MeetingLibrary;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -34,6 +35,5 @@ namespace Models
                 return string.Format("{0} {1}", Name, Code);
             }
         }
-
     }
 }

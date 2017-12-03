@@ -50,11 +50,22 @@ namespace ECBMeetingReservations
                 }
                 else
                 {
-                    updateSelectedForNew();
-                    ((MainWindow)Application.Current.MainWindow).showReservationsInListBox();
-                    this.Close();
+                    if (validateDateTimeReservations())
+                    {
+                        updateSelectedForNew();
+                        ((MainWindow)Application.Current.MainWindow).showReservationsInListBox();
+                        this.Close();
+                    }
                 }
             }
+        }
+
+        private bool validateDateTimeReservations()
+        {
+            if (createNewReservation())
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -128,9 +139,7 @@ namespace ECBMeetingReservations
         /// </summary>
         private bool transformDataFromUI()
         {
-            _a1 = int.Parse(FromPlanHour.Text) * 60 + int.Parse(FromPlanMinute.Text);
-            _a2 = int.Parse(ToPlanHour.Text) * 60 + int.Parse(ToPlanMinute.Text);
-            
+
             TimeSpan timeFrom = new TimeSpan(int.Parse(FromPlanHour.Text), int.Parse(FromPlanMinute.Text), 0);
             TimeSpan timeTo = new TimeSpan(int.Parse(ToPlanHour.Text), int.Parse(ToPlanMinute.Text), 0);
 
@@ -153,6 +162,9 @@ namespace ECBMeetingReservations
         /// <returns></returns>
         private bool createNewReservation()
         {
+            _a1 = int.Parse(FromPlanHour.Text) * 60 + int.Parse(FromPlanMinute.Text);
+            _a2 = int.Parse(ToPlanHour.Text) * 60 + int.Parse(ToPlanMinute.Text);
+
             if (validateExistingReservations(_a1, _a2))
             {
                 DataManager.Reservation.Add(_meetingReservation);
@@ -229,9 +241,19 @@ namespace ECBMeetingReservations
                 MessageBox.Show("Please enter the customer name.");
                 return false;
             }
+            else if ((CustomerTextBox.Text.Length > 100) && (CustomerTextBox.Text.Length < 2))
+            {
+                MessageBox.Show("Length of your name must be 100 between 2!");
+                return false;
+            }
             else if (NoteTextBox.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Please enter the description.");
+                return false;
+            }
+            else if ((NoteTextBox.Text.Length > 300) && (NoteTextBox.Text.Length < 0))
+            {
+                MessageBox.Show("Length of your note must be 300 between 0!");
                 return false;
             }
             else
