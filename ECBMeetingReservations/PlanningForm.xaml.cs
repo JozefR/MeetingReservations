@@ -50,7 +50,7 @@ namespace ECBMeetingReservations
                 }
                 else
                 {
-                    if (validateDateTimeReservations())
+                    if (CreateEditReservation())
                     {
                         updateSelectedForNew();
                         ((MainWindow)Application.Current.MainWindow).showReservationsInListBox();
@@ -169,6 +169,31 @@ namespace ECBMeetingReservations
             {
                 DataManager.Reservation.Add(_meetingReservation);
                 assignReservationToCorrectRoom(_meetingReservation);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("There is already reservation on that time!");
+                return false;
+            }
+        }
+
+        private bool CreateEditReservation()
+        {
+            _a1 = int.Parse(FromPlanHour.Text) * 60 + int.Parse(FromPlanMinute.Text);
+            _a2 = int.Parse(ToPlanHour.Text) * 60 + int.Parse(ToPlanMinute.Text);
+
+            foreach (var reservation in DataManager.Reservation)
+            {
+                if (_meetingReservation == reservation)
+                {
+                    reservation.TimeFrom = new TimeSpan(0);
+                    reservation.TimeTo = new TimeSpan(0);
+                }
+            }
+
+            if (validateExistingReservations(_a1, _a2))
+            {
                 return true;
             }
             else

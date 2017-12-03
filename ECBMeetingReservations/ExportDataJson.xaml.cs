@@ -11,7 +11,6 @@ namespace ECBMeetingReservations
     {
         private string _path;
 
-
         public ExportDataJson()
         {
             InitializeComponent();
@@ -48,7 +47,6 @@ namespace ECBMeetingReservations
 
         private void exportFile()
         {
-            /*
             if (_path != null)
             {
                 SaveDataJson.exportDataToJson(_path);
@@ -58,10 +56,6 @@ namespace ECBMeetingReservations
             {
                 MessageBox.Show("Please first choose the file!");
             }
-            */
-
-            SaveDataJson.exportDataToJson(_path);
-            this.Close();
         }
     }
 }

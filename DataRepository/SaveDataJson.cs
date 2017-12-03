@@ -12,10 +12,10 @@ namespace DataRepository
 
         public static void exportDataToJson(string path)
         {
-            JSONToFile(ToJSONFormat(path));
+            JSONToFile(path, ToJSONFormat());
         }
 
-        private static string ToJSONFormat(string path)
+        private static string ToJSONFormat()
         {
             StringBuilder sb = new StringBuilder();
             JsonWriter jw = new JsonTextWriter(new StringWriter(sb));
@@ -84,29 +84,9 @@ namespace DataRepository
             return sb.ToString();
         }
 
-        private static void JSONToFile(string format)
+        private static void JSONToFile(string path, string format)
         {
-            File.WriteAllText(@"C:\Users\randj\Dropbox\NET\Projects\Meeting-Centres\MeetingReservation\DataRepository\exportData.json", format);
+            File.WriteAllText($@"{path}", format);
         }
-        /*
-         *                             jw.WritePropertyName("from");
-                            jw.WriteValue(room.Name);
-                            jw.WritePropertyName("to");
-                            jw.WriteValue(room.VideoConference);
-
-                            /*
-                            jw.WritePropertyName("from");
-                            jw.WriteValue(reser.TimeFrom);
-                            jw.WritePropertyName("to");
-                            jw.WriteValue(reser.TimeTo);
-                            jw.WritePropertyName("expectedPersonsCount");
-                            jw.WriteValue(reser.ExpectedPersonsCount);
-                            jw.WritePropertyName("customer");
-                            jw.WriteValue(reser.Customer);
-                            jw.WritePropertyName("videoConference");
-                            jw.WriteValue(reser.VideoConference);
-                            jw.WritePropertyName("note");
-                            jw.WriteValue(reser.Note);
-                            */
     }
 }
